@@ -1,0 +1,232 @@
+.wrapper {
+    width: 100%;
+    display: flex;
+}
+
+.infor_user {
+    width: 60%;
+    padding: 50px 0px;
+    padding-left: 10%;
+    border-right: 1px solid var(--hr);
+}
+
+.infor_user__div_img {
+    width: 200px;
+}
+
+.infor_user__div_img img {
+    width: 100%;
+}
+
+.infor_user__link_return_cart a {
+    color: var(--main_color);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.infor_user__title_infor_transport {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+#form-1 {
+    width: 80%;
+    margin-top: 30px;
+}
+
+.sign_up-infor-div {
+    width: 100%;
+    margin: 0px auto 20px auto;
+}
+
+.sign_up-infor {
+    margin-bottom: 10px;
+}
+
+.sign_up-infor span {
+    display: block;
+    margin-top: 10px;
+}
+
+.sign_up-infor input:focus {
+    outline: none;
+}
+
+.sign_up-infor input {
+    width: 100%;
+    height: 37px;
+    padding: 0px 10px;
+    margin-top: 10px;
+}
+
+.box_method_pay {
+    border: 1px solid var(--origin_price);
+    border-radius: 5px;
+}
+
+.box_method_pay_child {
+    padding: 20px 20px;
+    border-bottom: 1px solid var(--origin_price);
+    display: flex;
+}
+
+#box_method_pay_child_warning_ck span {
+    color: var(--text_black);
+    display: block;
+}
+
+.box_method_pay_child input {
+    border: 0px;
+    width: 18px;
+    cursor: pointer;
+}
+
+.box_method_pay_child label {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.box_method_pay_child label span {
+    margin-left: 10px;
+    color: var(--text_black);
+}
+
+.box_method_pay_child_warning {
+    border: none;
+    background-color: #fafafa;
+}
+
+.input_submit_order input {
+    width: 160px;
+    height: 50px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    color: var(--white_color);
+    background-color: var(--main_color);
+}
+
+.input_submit_order {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input_submit_order a {
+    color: var(--main_color);
+    text-decoration: none;
+}
+
+.disabled {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+
+
+.infor_pay_book {
+    width: 40%;
+    padding-top: 80px;
+    padding-left: 30px;
+    padding-right: 200px;
+    background-color: #fafafa;
+    border-left: 1px solid var(--hr);
+}
+
+.infor_pay_book > div {
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.infor_pay_book__img_and_price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.infor_pay_book__img_and_name {
+    display: flex;
+    align-items: center;
+}
+
+.infor_pay_book__img_background {
+    width: 80px;
+    height: 80px;
+    border-radius: 3px;
+    background-color: var(--white_color);
+    border: 1px solid var(--origin_price);
+    position: relative;
+    margin-right: 10px;
+}
+
+.infor_pay_book__img {
+    width: 60px;
+    height: 80px;
+    padding: 7px;
+    margin: auto;
+}
+
+.infor_pay_book__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.infor_pay_book__img_and_name__quantity_book {
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    right: -15px;
+    top: -15px;
+    border-radius: 100rem;
+    background-color: #999;
+    color: #fff;
+}
+
+.infor_pay_book_name_and_version {
+    display: flex;
+    flex-direction: column;
+}
+
+.infor_pay_book__name {
+    font-size: 17px;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.infor_pay_book__version {
+    font-size: 14px;
+    color: #6b6b6b;
+}
+
+.infor_pay_book_transport_fee {
+    padding: 20px 0px;
+}
+
+.infor_pay_book_transport_fee__key_and_value {
+    display: flex;
+    justify-content: space-between;
+}
+
+.infor_pay_book_transport_fee__key {
+    color: #525252;
+}
+
+.infor_pay_book_transport_fee__value {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.infor_pay_book_transport_total_fee {
+    padding: 20px 0px;
+}

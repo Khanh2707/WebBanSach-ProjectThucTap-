@@ -1,0 +1,235 @@
+@charset "UTF-8";
+
+:root {
+    --main_color: #6d9e82;
+    --white_color: #FFF;
+    --text_black: #333;
+    --origin_price: #BEBEBE;
+    --text_69: #696969;
+    --hr: #DDD;
+}
+
+* {
+    box-sizing: inherit;
+    margin: 0px;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes growth_scale {
+    from {
+        transform: scale(var(--growth-from));
+    }
+    to {
+        transform: scale(var(--growth-to));
+    }
+}
+
+@keyframes growth_cart {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    animation: fadeIn ease-in 0.2s;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.modal_body {
+    --growth-from: 0.7;
+    --growth-to: 1;
+    width: 900px;
+    height: 530px;
+    background-color: var(--white_color);
+    margin: auto;
+    border: 7px solid var(--main_color);
+    animation: growth_scale linear 0.2s;
+    position: relative;
+}
+
+.modal_body-container {
+    display: flex;
+    width: 100%;
+    align-self: center;
+    justify-content: space-between;
+    margin-top: 17px;
+}
+
+.modal_body__img {
+    width: 35%;
+    position: relative;
+    text-align: center;
+}
+
+.modal_body__img img {
+    width: 100%;
+}
+
+.modal_body__info {
+    width: 60%;
+    margin-right: 10px;
+}
+
+.modal_body__info-title {
+    font-size: 25px;
+    color: var(--text_black);
+    margin-bottom: 20px;
+}
+
+.modal_body__info-price {
+    margin-bottom: 20px;
+}
+
+.modal_body__info-price-sale {
+    color: var(--main_color);
+    font-size: 25px;
+    margin-right: 10px;
+}
+
+.modal_body__info-price-origin {
+    color: var(--origin_price);
+}
+
+.info-description-container {
+    margin-bottom: 10px;
+}
+
+.info-description-key {
+    color: var(--text_69);
+    font-weight: bolder;
+    display: inline-block;
+    width: 120px;
+    margin-bottom: 5px;
+}
+
+.modal_body__info-content {
+    margin-bottom: 20px;
+}
+
+.modal_body__info-version-key {
+    margin-bottom: 10px;
+}
+
+.modal_body__info-version-value {
+    width: 100px;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+.modal_body__quantity_box {
+    display: flex;
+}
+
+.quantity_box-down {
+    display: block;
+    width: 45px;
+    height: 50px;
+    cursor: pointer;
+    user-select: none;
+    line-height: 50px;
+    text-align: center;
+    color: var(--white_color);
+    border-radius: 5px 0px 0px 5px;
+    background-color: var(--text_black);
+}
+
+.modal_body__quantity_box input {
+    width: 45px;
+    height: 50px;
+    border: none;
+    outline: none;
+    text-align: center;
+    color: var(--white_color);
+    background-color: var(--text_black);
+    border-left: 1px solid var(--white_color);
+    border-right: 1px solid var(--white_color);
+}
+
+.quantity_box-up {
+    display: block;
+    width: 45px;
+    height: 50px;
+    cursor: pointer;
+    user-select: none;
+    line-height: 50px;
+    text-align: center;
+    color: var(--white_color);
+    border-radius: 0px 5px 5px 0px;
+    background-color: var(--text_black);
+}
+
+.modal_body__info-button {
+    display: flex;
+    margin-top: 26px;
+}
+
+.modal_body__info-button a {
+    display: block;
+    color: var(--white_color);
+    background-color: var(--main_color);
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    margin-right: 10px;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal_body__info-button a:hover {
+    opacity: 0.9;
+}
+
+.modal_body-button_close {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 100rem;
+    cursor: pointer;
+    background-color: var(--white_color);
+    border: 3px solid var(--main_color);
+}
+
+.modal_body-button_close i {
+    font-size: 17px;
+    color: var(--text_black);
+}
+
+
+/* class errorMesgFOrm  */
+.invalid span {
+    color: red;
+}
+
+.invalid:not(:nth-child(5)) div input {
+    border: 1px solid red;
+    border-radius: 3px;
+}

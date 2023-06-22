@@ -1,0 +1,209 @@
+@charset "UTF-8";
+
+.body_bg {
+    background-color: #f0f0f0;
+}
+
+.body {
+    width: 80%;
+    padding: 30px auto 50px auto;
+    margin: auto;
+}
+
+.cart_interface__title {
+    width: 80%;
+    margin: auto;
+    padding: 40px 0px 20px 0px;
+}
+
+.cart_interface__title span:first-child {
+    font-size: 22px;
+}
+
+.cart_interface-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart_interface-container__checkbox_cart {
+    display: flex;
+    flex-direction: column;
+    width: 74%;
+    margin-bottom: 50px;
+}
+
+.checkbox_cart__navbar {
+    display: flex;
+    margin-bottom: 10px;
+    height: 40px;
+    align-items: center;
+    border-radius: 7px;
+    background-color: var(--white_color);
+}
+
+.checkbox_cart__navbar div {
+    display: flex;
+    justify-content: center;
+    width: 10%;
+}
+
+.checkbox_cart__navbar div input {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.checkbox_cart__navbar span:nth-child(2) {
+    display: inline-block;
+    width: calc(40% + 70px + 20px);
+}
+
+.checkbox_cart__navbar span:nth-child(3) {
+    display: inline-block;
+    width: 20%;
+}
+
+.checkbox_cart__navbar span:nth-child(4) {
+    display: inline-block;
+    width: 15%;
+}
+
+.checkbox_cart__infor_product-container {
+    border-radius: 7px;
+    background-color: var(--white_color);
+}
+
+.checkbox_cart__infor_product {
+    display: flex;
+    padding: 20px 0px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.checkbox_cart__infor_product div:first-child {
+    display: flex;
+    justify-content: center;
+    width: 10%;
+}
+
+.checkbox_cart__infor_product div input:first-child {
+    width: 20px;
+    height: 20px;
+    align-self: center;
+    cursor: pointer;
+}
+
+.checkbox_cart__infor_product-img {
+    width: 70px;
+    margin-right: 20px;
+}
+
+.checkbox_cart__infor_product-img img {
+    width: 100%;
+}
+
+.checkbox_cart__infor_product-name_and_price {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40%;
+}
+
+.checkbox_cart__infor_product-name {
+    text-transform: capitalize;
+    color: var(--text_black);
+    text-decoration: none;
+}
+
+.checkbox_cart__infor_product-price-sale {
+    margin-right: 10px;
+    font-weight: bold;
+    color: var(--text_black);
+}
+
+.checkbox_cart__infor_product-price-origin {
+    color: var(--origin_price);
+    font-weight: bold;
+}
+
+.checkbox_cart__infor_product-box-quantity {
+    width: 20%;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox_cart__infor_product-box-quantity a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    user-select: none;
+    line-height: 30px;
+    text-align: center;
+    color: var(--text_black);
+    border: 1px solid var(--origin_price);
+    background-color: var(--white_color);
+}
+
+.checkbox_cart__infor_product-box-quantity input {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: var(--text_black);
+    border: 1px solid var(--origin_price);
+}
+
+.checkbox_cart__infor_product-box-quantity span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--origin_price);
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    color: var(--text_69);
+    font-weight: bold;
+    user-select: none;
+}
+
+.checkbox_cart__infor_product-price-last {
+    display: flex;
+    color: rgb(224, 0, 0);
+    font-weight: bold;
+    align-items: center;
+    width: 15%;
+}
+
+.checkbox_cart__infor_product-trash {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.cart_interface-container__pay_cart {
+    width: 25%;
+    height: 120px;
+    padding: 15px;
+    border-radius: 7px;
+    background-color: var(--white_color);
+}
+
+.pay_cart__capital_sum {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.pay_cart__button_pay {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--white_color);
+    background-color: var(--main_color);
+    margin-top: 15px;
+    text-align: center;
+}
