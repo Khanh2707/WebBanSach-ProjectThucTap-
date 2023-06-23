@@ -498,8 +498,11 @@
 
 			<!-- body__slide_banner -->
 			<div class="body__slide_banner">
-				<a href="listbookfilterbycategoryid?id_category=${0 }"><img src="IMG/IMG_Slide/slide_1.jpg" alt=""></a>
-				<a href="listbookfilterbycategoryid?id_category=${0 }"><img src="IMG/IMG_Slide/slide_2.jpg" alt=""></a>
+			<jsp:useBean id="banner" class="dal.Banner_DAO"></jsp:useBean>
+			<c:forEach items="${banner.all }" var="bn">
+				<a href="listbookfilterbycategoryid?id_category=${0 }"><img src="${bn.img }" alt=""></a>
+				<a href="listbookfilterbycategoryid?id_category=${0 }"><img src="${bn.img }" alt=""></a>
+			</c:forEach>
 			</div>
 			<!-- body__slide_banner -->
 
@@ -607,6 +610,17 @@
 		                                    <span class="div_in-price-origin"><del><fmt:formatNumber value="${origin_price }" /><ins>đ</ins></del></span>
 		                                </div>
 	                                </div>
+	                                <div class="div_in__choice_hover">
+	                                    <div class="eye">
+	                                        <i class="fa-solid fa-eye"></i>
+	                                    </div>
+	                                    <div>
+	                                        <i class="fa-solid fa-bag-shopping"></i>
+	                                    </div>
+	                                    <div>
+	                                        <i class="fa-solid fa-cart-shopping"></i>
+	                                    </div>
+                                	</div>
 	                            </div>
 	                            <span class="div_out-label_sale">-${o.ratio_sale }%</span>
 	                        </div>

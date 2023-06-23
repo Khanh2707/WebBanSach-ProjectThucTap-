@@ -259,4 +259,44 @@
     <servlet-name>Exit</servlet-name>
     <url-pattern>/exit</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Banner_DAO</display-name>
+    <servlet-name>Banner_DAO</servlet-name>
+    <servlet-class>dal.Banner_DAO</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Banner_DAO</servlet-name>
+    <url-pattern>/Banner_DAO</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>List_Banner</display-name>
+    <servlet-name>List_Banner</servlet-name>
+    <servlet-class>controller.BannerServ.List_Banner</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>List_Banner</servlet-name>
+    <url-pattern>/list_banner</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>List_Hnb</display-name>
+    <servlet-name>List_Hnb</servlet-name>
+    <servlet-class>controller.HnbServ.List_Hnb</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>List_Hnb</servlet-name>
+    <url-pattern>/list_hnb</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>List_Account</display-name>
+    <servlet-name>List_Account</servlet-name>
+    <servlet-class>controller.Account.List_Account</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>List_Account</servlet-name>
+    <url-pattern>/list_account</url-pattern>
+  </servlet-mapping>
 </web-app>

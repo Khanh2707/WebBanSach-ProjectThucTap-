@@ -3,6 +3,7 @@ package dal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import model.Account;
 
@@ -44,5 +45,24 @@ public class Account_DAO extends DBContext {
 		catch (SQLException e) {
 			System.out.println(e);
 		}
+	}
+	
+	public ArrayList<Account> getAll() {
+		ArrayList<Account> list = new ArrayList<>();
+		String selectQuery = "select *\r\n"
+				+ "from Account";
+		try {
+			PreparedStatement ps = conn.prepareStatement(selectQuery);
+			
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Account a = new Account(rs.getString("fullname"), rs.getString("username"), rs.getString("password"), rs.getInt("role"));
+				list.add(a);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 }

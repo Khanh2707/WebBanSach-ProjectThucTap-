@@ -33,7 +33,7 @@
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
                                 <label for="id_category">Id Category</label>
-                                <input type="text" name="id_category" id="id_category" placeholder="Id Category">
+                                <input type="text" name="id" id="id_category" placeholder="Id Category">
                             </div>
                             <span class="form-mesg">
 
@@ -42,7 +42,7 @@
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
                                 <label for="name_category">Name Category</label>
-                                <input type="text" name="name_category" id="name_category" placeholder="Name Category">
+                                <input type="text" name="name" id="name_category" placeholder="Name Category">
                             </div>
                             <span class="form-mesg">
 

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,18 +23,17 @@
 <body>
 	<div class="body">
             <span class="sign_up__title">
-                Sửa thông tin NXB
+                thêm banner mới
             </span>
             <hr>
             <div class="sign_up__wrapper">
                 <div class="sign_up__container">
                 	<h3 style="color: red; text-align: center;">${requestScope.error }</h3>
-                	<c:set var="publish_company" value="${requestScope.publish_company }" />
-                    <form action="update_publish_company" method="post" class="form" id="form-1">
+                    <form action="add_banner" class="form" id="form-1">
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
-                                <label for="id_publish_company">Id Publish company</label>
-                                <input type="text" name="id" id="id_publish_company" placeholder="Id Publish company" value="${publish_company.id }" readonly="readonly"">
+                                <label for="id_banner">Id Banner</label>
+                                <input type="text" name="id" id="id_banner" placeholder="Id Banner">
                             </div>
                             <span class="form-mesg">
 
@@ -43,19 +41,19 @@
                         </div>
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
-                                <label for="name_publish_company">Name Publish company</label>
-                                <input type="text" name="name" id="name_publish_company" placeholder="Name Publish company" value="${publish_company.name }">
+                                <label for="name_banner">Name Banner</label>
+                                <input type="text" name="name" id="name_banner" placeholder="Name Banner">
                             </div>
                             <span class="form-mesg">
 
                             </span>
                         </div>
                         <div class="sign_up-input_submit">
-                            <input type="submit" value="Thay đổi">
+                            <input type="submit" value="Thêm tác giả">
                         </div>
                     </form>
                     <div class="sign_in-link_return">
-                        <a href="list_publish_company">Quay về</a>
+                        <a href="list_banner">Quay về</a>
                     </div>
                 </div>
             </div>
@@ -67,8 +65,8 @@
 			mesg : `.form-mesg`,
 			formGroup : `.sign_up-infor-div`,
 			rules : [
-					required(`#id_publish_company`, `Chưa nhập Id!`),
-					required(`#name_publish_company`, `Chưa nhập Name!`),
+					required(`#id_category`, `Chưa nhập Id!`),
+					required(`#name_category`, `Chưa nhập Name!`),
 					],
 			/*
 			submitSuccess : function(data) {

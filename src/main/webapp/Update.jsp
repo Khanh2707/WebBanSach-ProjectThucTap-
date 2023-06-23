@@ -31,11 +31,11 @@
                 <div class="sign_up__container">
                 	<h3 style="color: red; text-align: center;">${requestScope.error }</h3>
                 	<c:set var="author" value="${requestScope.author }" />
-                    <form action="update_author" method="post" class="form" id="form-1">
+                    <form action="update" method="post" class="form" id="form-1">
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
                                 <label for="id_author">Id Author</label>
-                                <input type="text" name="id_author" id="id_author" placeholder="Id Author" value="${author.id }" readonly="readonly"">
+                                <input type="text" name="id" id="id_author" placeholder="Id Author" value="${author.id }" readonly="readonly"">
                             </div>
                             <span class="form-mesg">
 
@@ -44,7 +44,7 @@
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
                                 <label for="name_author">Name Author</label>
-                                <input type="text" name="name_author" id="name_author" placeholder="Name Author" value="${author.name }">
+                                <input type="text" name="name" id="name_author" placeholder="Name Author" value="${author.name }">
                             </div>
                             <span class="form-mesg">
 

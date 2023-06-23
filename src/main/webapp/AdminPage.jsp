@@ -67,6 +67,27 @@
 			}
 		}
 	</script>
+	<script type="text/javascript">
+		function doDeleteBanner(id) {
+			if (confirm("Are you sure want delete " +id)) {
+				window.location = "delete_publish_company?id="+id;
+			}
+		}
+	</script>
+	<script type="text/javascript">
+		function doDeleteHnb(id) {
+			if (confirm("Are you sure want delete " +id)) {
+				window.location = "delete_publish_company?id="+id;
+			}
+		}
+	</script>
+	<script type="text/javascript">
+		function doDeleteTaiKhoan(id) {
+			if (confirm("Are you sure want delete " +id)) {
+				window.location = "delete_taikhoan?id="+id;
+			}
+		}
+	</script>
 	<div class="wrapper">
         <c:set var="keySelected" value="${requestScope.keySelected }" />
         <div class="menu_col">
@@ -82,6 +103,15 @@
 	            </li>
 	            <li>
 	                <a href="list_category">Quản lý thể loại</a>
+	            </li>
+	            <li>
+	                <a href="list_banner">Quản lý banner</a>
+	            </li>
+	            <li>
+	                <a href="list_hnb">Quản lý ảnh hnb</a>
+	            </li>
+	            <li>
+	                <a href="list_account">Quản lý tài khoản</a>
 	            </li>
 	            <li>
 	                <a href="Home.jsp">Về trang người dùng</a>
@@ -204,7 +234,7 @@
 		                        </div>
 		                        <div class="list_info_book_actions">
 		                            <a href="update?id=${o.id }" class="button_update"><i class="fa-solid fa-pen"></i></a>
-		                            <a href="#" class="button_delete" onclick="doDeleteSP('${o.id}')"><i class="fa-solid fa-trash"></i></a>
+		                            <a href="#" class="button_delete" onclick="doDeleteTG('${o.id}')"><i class="fa-solid fa-trash"></i></a>
 		                        </div>
 		                    </div>
 		                </div>
@@ -375,6 +405,195 @@
 				</div>
 			</c:if>
 			
+			<c:if test="${keySelected == 'banner'}">
+	        	<div class="content_book">
+		            <div class="header">
+		                <span class="title">
+		                    Quản lý Banner
+		                </span>
+		                <a class="button_add" href="Add_Banner">
+		                    <i class="fa-solid fa-circle-plus"></i>
+		                </a>
+		            </div>
+		            <div class="list_book">
+		                <div class="list_title" style="justify-content: space-between;">
+		                    <span class="list_title_id">
+		                        Id
+		                    </span>
+		                    <span class="list_title_img">
+		                        Image
+		                    </span>
+		                    <span class="list_title_actions">
+		                        Actions
+		                    </span>
+		                </div>
+		                <c:forEach items="${requestScope.data }" var="o">
+		                <div class="div_list_info_book">
+		                    <div class="list_info_book" style="justify-content: space-between;">
+		                        <span class="list_info_book_id">
+		                            ${o.id }
+		                        </span>
+		                        <div class="list_info_book_img" style="width: 500px;">
+		                            <img src="${o.img }" alt="">
+		                        </div>
+		                        <div class="list_info_book_actions">
+		                            <a href="update_banner?id=${o.id }" class="button_update"><i class="fa-solid fa-pen"></i></a>
+		                            <a href="#" class="button_delete" onclick="doDeleteBanner('${o.id}')"><i class="fa-solid fa-trash"></i></a>
+		                        </div>
+		                    </div>
+		                </div>
+		                </c:forEach>
+		            </div>
+		            <c:set var="page" value="${requestScope.page }" />
+		            <div class="page_product__footer">
+						<c:if test="${page > 1 }">
+							<div class="page_product__footer__change_page" id="page_product__footer__prev_page">
+								<a href="list_publish_company?page=${page - 1 }"> &lt Trang trước </a>
+							</div>
+						</c:if>
+						<c:if test="${page == 1 }">
+							<div style="visibility: hidden;" class="page_product__footer__change_page" id="page_product__footer__prev_page">
+							</div>
+						</c:if>
+						<div class="page_product__footer__number_page">
+							<c:forEach begin="${1 }" end="${requestScope.totalNumPage }" var="i">
+								<a class="${i == page ? "activeNumPage" : ""}" href="list_publish_company?page=${i }">${i }</a>
+							</c:forEach>
+						</div>
+						<c:if test="${page < totalNumPage }">
+							<div class="page_product__footer__change_page" id="page_product__footer__next_page">
+								<a href="list_publish_company?page=${page + 1 }"> Trang sau &gt </a>
+							</div>
+						</c:if>
+						<c:if test="${page == totalNumPage }">
+							<div style="visibility: hidden;" class="page_product__footer__change_page" id="page_product__footer__prev_page">
+							</div>
+						</c:if>
+					</div>
+				</div>
+			</c:if>
+			
+			<c:if test="${keySelected == 'hnb'}">
+	        	<div class="content_book">
+		            <div class="header">
+		                <span class="title">
+		                    Quản lý Hnb
+		                </span>
+		                <a class="button_add" href="Add_Hnb">
+		                    <i class="fa-solid fa-circle-plus"></i>
+		                </a>
+		            </div>
+		            <div class="list_book">
+		                <div class="list_title" style="justify-content: space-between;">
+		                    <span class="list_title_id">
+		                        Id
+		                    </span>
+		                    <span class="list_title_img">
+		                        Image
+		                    </span>
+		                    <span class="list_title_actions">
+		                        Actions
+		                    </span>
+		                </div>
+		                <c:forEach items="${requestScope.data }" var="o">
+		                <div class="div_list_info_book">
+		                    <div class="list_info_book" style="justify-content: space-between;">
+		                        <span class="list_info_book_id">
+		                            ${o.id }
+		                        </span>
+		                        <div class="list_info_book_img">
+		                            <img src="${o.img }" alt="">
+		                        </div>
+		                        <div class="list_info_book_actions">
+		                            <a href="update_hnb?id=${o.id }" class="button_update"><i class="fa-solid fa-pen"></i></a>
+		                            <a href="#" class="button_delete" onclick="doDeleteHnb('${o.id}')"><i class="fa-solid fa-trash"></i></a>
+		                        </div>
+		                    </div>
+		                </div>
+		                </c:forEach>
+		            </div>
+		            <c:set var="page" value="${requestScope.page }" />
+		            <div class="page_product__footer">
+						<c:if test="${page > 1 }">
+							<div class="page_product__footer__change_page" id="page_product__footer__prev_page">
+								<a href="list_publish_company?page=${page - 1 }"> &lt Trang trước </a>
+							</div>
+						</c:if>
+						<c:if test="${page == 1 }">
+							<div style="visibility: hidden;" class="page_product__footer__change_page" id="page_product__footer__prev_page">
+							</div>
+						</c:if>
+						<div class="page_product__footer__number_page">
+							<c:forEach begin="${1 }" end="${requestScope.totalNumPage }" var="i">
+								<a class="${i == page ? "activeNumPage" : ""}" href="list_publish_company?page=${i }">${i }</a>
+							</c:forEach>
+						</div>
+						<c:if test="${page < totalNumPage }">
+							<div class="page_product__footer__change_page" id="page_product__footer__next_page">
+								<a href="list_publish_company?page=${page + 1 }"> Trang sau &gt </a>
+							</div>
+						</c:if>
+						<c:if test="${page == totalNumPage }">
+							<div style="visibility: hidden;" class="page_product__footer__change_page" id="page_product__footer__prev_page">
+							</div>
+						</c:if>
+					</div>
+				</div>
+			</c:if>
+			
+			<c:if test="${keySelected == 'tk'}">
+	        	<div class="content_book">
+		            <div class="header">
+		                <span class="title">
+		                    Quản lý tài khoản
+		                </span>
+		                <a class="button_add" href="Add_Account.jsp">
+		                    <i class="fa-solid fa-circle-plus"></i>
+		                </a>
+		            </div>
+		            <div class="list_book">
+		                <div class="list_title">
+		                    <span class="list_title_id">
+		                        FullName
+		                    </span>
+		                    <span class="list_title_name">
+		                        Username
+		                    </span>
+		                    <span class="list_title_img">
+		                        Password
+		                    </span>
+		                    <span class="list_title_price">
+		                        Role
+		                    </span>
+		                    <span class="list_title_actions">
+		                        Actions
+		                    </span>
+		                </div>
+		                <c:forEach items="${requestScope.data }" var="o">
+		                <div class="div_list_info_book">
+		                    <div class="list_info_book">
+		                        <span class="list_info_book_id">
+		                            ${o.fullname }
+		                        </span>
+		                        <span class="list_info_book_name">
+		                            ${o.username }
+		                        </span>
+		                        <div class="list_info_book_img">
+		                            <span>${o.password }</span>
+		                        </div>
+		                        <span class="list_info_book_price">
+		                            ${o.role }
+		                        </span>
+		                        <div class="list_info_book_actions">
+		                            <a href="update_account?id=${o.username }" class="button_update"><i class="fa-solid fa-pen"></i></a>
+		                            <a href="#" class="button_delete" onclick="doDeleteTaiKhoan('${o.username}')"><i class="fa-solid fa-trash"></i></a>
+		                        </div>
+		                    </div>
+		                </div>
+		                </c:forEach>
+		            </div>
+				</div>
+			</c:if>
 			
         </div>
     </div>

@@ -33,7 +33,7 @@
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
                                 <label for="id_NXB">Id NXB</label>
-                                <input type="text" name="id_NXB" id="id_NXB" placeholder="Id NXB">
+                                <input type="text" name="id" id="id_NXB" placeholder="Id NXB">
                             </div>
                             <span class="form-mesg">
 
@@ -42,7 +42,7 @@
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
                                 <label for="name_NXB">Name NXB</label>
-                                <input type="text" name="name_NXB" id="name_NXB" placeholder="Name NXB">
+                                <input type="text" name="name" id="name_NXB" placeholder="Name NXB">
                             </div>
                             <span class="form-mesg">
 

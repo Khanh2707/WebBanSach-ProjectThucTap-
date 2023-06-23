@@ -30,11 +30,11 @@
             <div class="sign_up__wrapper">
                 <div class="sign_up__container">
                 	<h3 style="color: red; text-align: center;">${requestScope.error }</h3>
-                    <form action="add_author" class="form" id="form-1">
+                    <form action="add" class="form" id="form-1">
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
                                 <label for="id_author">Id author</label>
-                                <input type="text" name="id_author" id="id_author" placeholder="Id author">
+                                <input type="text" name="id" id="id_author" placeholder="Id author">
                             </div>
                             <span class="form-mesg">
 
@@ -43,7 +43,7 @@
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
                                 <label for="name_author">Name author</label>
-                                <input type="text" name="name_author" id="name_author" placeholder="Name author">
+                                <input type="text" name="name" id="name_author" placeholder="Name author">
                             </div>
                             <span class="form-mesg">
 
@@ -54,7 +54,7 @@
                         </div>
                     </form>
                     <div class="sign_in-link_return">
-                        <a href="list_author">Quay về</a>
+                        <a href="list">Quay về</a>
                     </div>
                 </div>
             </div>

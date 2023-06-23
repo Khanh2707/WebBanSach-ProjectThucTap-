@@ -22,7 +22,18 @@
 <link rel="stylesheet" href="css_public/header.css">
 </head>
 <body>
-	<c:if test="${sessionScope.account.fullname != null}">
+	<c:if test="${sessionScope.account.fullname != null && sessionScope.account.fullname == 'sa'}">
+		<script type="text/javascript">
+			window.onload = function () {
+				let log = document.getElementsByClassName('header__navbar-login')[0];
+				log.classList.remove('header__navbar-login--not_login');
+				log.classList.add('header__navbar-login--are_login');
+				document.getElementById("tqlmn").setAttribute("style","display: block");
+			}
+		</script>
+	</c:if>
+	
+	<c:if test="${sessionScope.account.fullname != null && sessionScope.account.fullname != 'sa'}">
 		<script type="text/javascript">
 			window.onload = function () {
 				let log = document.getElementsByClassName('header__navbar-login')[0];
@@ -31,6 +42,11 @@
 			}
 		</script>
 	</c:if>
+	
+	<script type="text/javascript">
+		
+	</script>
+	
 	<c:if test="${sessionScope.account.fullname == null}">
 		<script type="text/javascript">
 			window.onload = function () {
@@ -124,7 +140,7 @@
 							<i class="fa-solid fa-cart-plus fa-2xl"></i> <span>2</span>
 						</div>
 						<div class="cart__text">
-							<span class="cart_text">Giỏ hàng</span><br> <span>3</span> <span>sản
+							<span class="cart_text">Giỏ hàng</span><br> <span>2</span> <span>sản
 								phẩm</span>
 						</div>
 					</a>
@@ -138,7 +154,7 @@
 							sản phẩm </span>
 
 						<header class="cart_badge__header">
-							<span>Số lượng sản phẩm: </span> <span>1</span>
+							<span>Số lượng sản phẩm: </span> <span>2</span>
 						</header>
 						<ul class="cart_badge__list">
 							<li class="cart_badge__items">
@@ -149,10 +165,10 @@
 								</div>
 								<div class="cart_badge__items-info">
 									<a class="cart_badge__items-name" href="detail_product.html">
-										Người Trong Lưới </a>
+										Chấn Hưng Nhật Bản </a>
 									<div class="cart_badge__items-description">
 										<span class="items-description-version"> Bản thường </span> <br>
-										<span class="items-description-quantity"> 154,000 x 1 </span>
+										<span class="items-description-quantity"> 154,000 x 2 </span>
 									</div>
 								</div> <span class="cart_badge__items-times"><a href=""><i
 										class="fa-solid fa-circle-xmark"></i></a></span>
@@ -189,8 +205,8 @@
 						class="header__menu__li-1__a" href="">tin tức</a></li>
 					<li class="header__menu__li-1"><a
 						class="header__menu__li-1__a" href="Introduce.jsp">về karma</a></li>
-					<li class="header__menu__li-1" style="display: none;">
-						<a class="header__menu__li-1__a" href="Introduce.jsp">Trang quản lý</a>
+					<li id="tqlmn" class="header__menu__li-1" style="display: none;">
+						<a class="header__menu__li-1__a" href="list_book">Trang quản lý</a>
 					</li>
 				</ul>
 			</div>
