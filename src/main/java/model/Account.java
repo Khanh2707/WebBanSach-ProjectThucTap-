@@ -5,15 +5,17 @@ public class Account {
 	private String username;
 	private String password;
 	private int role;
+	private int amount;
 	
 	public Account() {
 	}
 
-	public Account(String fullname, String username, String password, int role) {
+	public Account(String fullname, String username, String password, int role, int amount) {
 		this.fullname = fullname;
 		this.username = username;
 		this.password = password;
 		this.role = role;
+		this.amount = amount;
 	}
 
 	public String getFullname() {
@@ -48,4 +50,11 @@ public class Account {
 		this.role = role;
 	}
 
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
 }

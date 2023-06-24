@@ -82,9 +82,9 @@
 		}
 	</script>
 	<script type="text/javascript">
-		function doDeleteAcc(id) {
-			if (confirm("Are you sure want delete " +id)) {
-				window.location = "delete_account?id="+id;
+		function doDeleteAcc(username) {
+			if (confirm("Are you sure want delete " +username)) {
+				window.location = "delete_account?username="+username;
 			}
 		}
 	</script>
@@ -565,7 +565,7 @@
 		                            ${o.password }
 		                        </span>
 		                        <div class="list_info_book_actions">
-		                            <a href="update_account?id=${o.username }" class="button_update"><i class="fa-solid fa-pen"></i></a>
+		                            <a href="update_account?username=${o.username }" class="button_update"><i class="fa-solid fa-pen"></i></a>
 		                            <a href="#" class="button_delete" onclick="doDeleteAcc('${o.username}')"><i class="fa-solid fa-trash"></i></a>
 		                        </div>
 		                    </div>

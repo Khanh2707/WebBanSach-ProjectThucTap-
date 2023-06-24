@@ -43,7 +43,7 @@ public class Add_Account extends HttpServlet {
 		Account_DAO aDAO = new Account_DAO();
 		Account a = aDAO.getAccountByUsername(username);
 		if (a == null) {
-			Account aNew = new Account(fullname, username, password, role);
+			Account aNew = new Account(fullname, username, password, role, 0);
 			aDAO.insert(aNew);
 			response.sendRedirect("list_account");
 		}

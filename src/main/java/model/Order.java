@@ -3,16 +3,16 @@ package model;
 public class Order {
 	private int id;
 	private String date;
-	private int id_customer;
-	private double totalMoney;
+	private String id_account;
+	private int totalMoney;
 	
 	public Order() {
 	}
 
-	public Order(int id, String date, int id_customer, double totalMoney) {
+	public Order(int id, String date, String id_account, int totalMoney) {
 		this.id = id;
 		this.date = date;
-		this.id_customer = id_customer;
+		this.id_account = id_account;
 		this.totalMoney = totalMoney;
 	}
 
@@ -32,27 +32,20 @@ public class Order {
 		this.date = date;
 	}
 
-	public int getId_customer() {
-		return id_customer;
+	public String getId_account() {
+		return id_account;
 	}
 
-	public void setId_customer(int id_customer) {
-		this.id_customer = id_customer;
+	public void setId_account(String id_account) {
+		this.id_account = id_account;
 	}
 
-	public double getTotalMoney() {
+	public int getTotalMoney() {
 		return totalMoney;
 	}
 
-	public void setTotalMoney(double totalMoney) {
+	public void setTotalMoney(int totalMoney) {
 		this.totalMoney = totalMoney;
 	}
-
-	@Override
-	public String toString() {
-		return "Order [id=" + id + ", date=" + date + ", id_customer=" + id_customer + ", totalMoney=" + totalMoney
-				+ "]";
-	}
-	
 	
 }

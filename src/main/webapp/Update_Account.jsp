@@ -59,6 +59,15 @@
 
                             </span>
                         </div>
+                        <div class="sign_up-infor-div">
+                            <div class="sign_up-infor">
+                                <label for="amount_account">Amount</label>
+                                <input type="text" name="amount" id="amount_account" placeholder="Amount" value="${account.amount }" readonly="readonly">
+                            </div>
+                            <span class="form-mesg">
+
+                            </span>
+                        </div>
                         <div class="sign_up-infor-div invalid">
                             <label for="" style="display: block; margin-bottom: 10px;">
                                 Role:
@@ -92,6 +101,7 @@
 					required(`#fullname_account`, `Chưa nhập Fullname!`),
 					required(`#username_account`, `Chưa nhập Username!`),
 					required(`#password_account`, `Chưa nhập Password!`),
+					required(`#amount_account`, `Chưa nhập Amount!`),
 					required(`input[name="role"]`, `Chưa chọn Role!`),
 					],
 			/*

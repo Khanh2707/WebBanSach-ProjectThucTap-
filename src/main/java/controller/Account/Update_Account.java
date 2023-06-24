@@ -45,15 +45,18 @@ public class Update_Account extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String role_raw = request.getParameter("role");
+		String amount_raw = request.getParameter("amount");
 		int role = -1;
+		int amount = -1;
 		try {
 			role = Integer.parseInt(role_raw);
+			amount = Integer.parseInt(amount_raw);
 		}
 		catch (NumberFormatException ex) {
 			System.out.println(ex);
 		}
 		Account_DAO aDAO = new Account_DAO();
-		Account aNew = new Account(fullname, username, password, role);
+		Account aNew = new Account(fullname, username, password, role, amount);
 		aDAO.update(aNew);
 		response.sendRedirect("list_account");
 	}

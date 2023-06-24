@@ -21,7 +21,7 @@ public class Account_DAO extends DBContext {
 			ResultSet rs = ps.executeQuery();
 			
 			if (rs.next()) {
-				Account a = new Account(rs.getString("fullname"), rs.getString("username"), rs.getString("password"), rs.getInt("role"));
+				Account a = new Account(rs.getString("fullname"), rs.getString("username"), rs.getString("password"), rs.getInt("role"), rs.getInt("amount"));
 				return a;
 			}
 		}
@@ -43,7 +43,7 @@ public class Account_DAO extends DBContext {
 			ResultSet rs = ps.executeQuery();
 			
 			if (rs.next()) {
-				Account a = new Account(rs.getString("fullname"), rs.getString("username"), rs.getString("password"), rs.getInt("role"));
+				Account a = new Account(rs.getString("fullname"), rs.getString("username"), rs.getString("password"), rs.getInt("role"), rs.getInt("amount"));
 				return a;
 			}
 		}
@@ -54,13 +54,14 @@ public class Account_DAO extends DBContext {
 	}
 	
 	public void insert(Account a) {
-		String insertQuery = "insert into Account values(?,?,?,?)";
+		String insertQuery = "insert into Account values(?,?,?,?,?)";
 		try {
 			PreparedStatement ps = conn.prepareStatement(insertQuery);
 			ps.setString(1, a.getFullname());
 			ps.setString(2, a.getUsername());
 			ps.setString(3, a.getPassword());
 			ps.setInt(4, a.getRole());
+			ps.setInt(5, a.getAmount());
 			
 			ps.executeUpdate();
 		}
@@ -72,7 +73,7 @@ public class Account_DAO extends DBContext {
 	public void delete(String username) {
 		String deleteQuery = "delete\r\n"
 				+ "from Account\r\n"
-				+ "where [username] = ?";
+				+ "where username = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(deleteQuery);
 			ps.setString(1, username);
@@ -85,12 +86,12 @@ public class Account_DAO extends DBContext {
 	}
 	
 	public void update(Account a) {
-		String deleteQuery = "update Account\n"
+		String updateQuery = "update Account\n"
 				+ "   SET [fullname] = ?"
 				+ "      ,[password] = ?"
 				+ " WHERE [username] = ?";
 		try {
-			PreparedStatement ps = conn.prepareStatement(deleteQuery);
+			PreparedStatement ps = conn.prepareStatement(updateQuery);
 			ps.setString(1, a.getFullname());
 			ps.setString(2, a.getPassword());
 			ps.setString(3, a.getUsername());
@@ -111,7 +112,7 @@ public class Account_DAO extends DBContext {
 			ps.setString(1, username);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				Account a = new Account(rs.getString("fullname"), rs.getString("username"), rs.getString("password"), rs.getInt("role"));
+				Account a = new Account(rs.getString("fullname"), username, rs.getString("password"), rs.getInt("role"), rs.getInt("amount"));
 				return a;
 			}
 		}
@@ -130,7 +131,7 @@ public class Account_DAO extends DBContext {
 			
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				Account a = new Account(rs.getString("fullname"), rs.getString("username"), rs.getString("password"), rs.getInt("role"));
+				Account a = new Account(rs.getString("fullname"), rs.getString("username"), rs.getString("password"), rs.getInt("role"), rs.getInt("amount"));
 				list.add(a);
 			}
 		}

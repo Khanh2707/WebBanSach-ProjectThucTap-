@@ -4,12 +4,12 @@ public class OrderLine {
 	private int id_order;
 	private String id_book;
 	private int quantity;
-	private double price;
+	private int price;
 	
 	public OrderLine() {
 	}
 
-	public OrderLine(int id_order, String id_book, int quantity, double price) {
+	public OrderLine(int id_order, String id_book, int quantity, int price) {
 		this.id_order = id_order;
 		this.id_book = id_book;
 		this.quantity = quantity;
@@ -40,18 +40,12 @@ public class OrderLine {
 		this.quantity = quantity;
 	}
 
-	public double getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(int price) {
 		this.price = price;
-	}
-
-	@Override
-	public String toString() {
-		return "OrderLine [id_order=" + id_order + ", id_book=" + id_book + ", quantity=" + quantity + ", price="
-				+ price + "]";
 	}
 	
 	

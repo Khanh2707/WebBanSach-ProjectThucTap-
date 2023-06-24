@@ -1,14 +1,14 @@
 package model;
 
-public class Book_in_Cart {
+public class Items {
 	private Book book;
 	private int quantity;
-	private double price;
+	private int price;
 	
-	public Book_in_Cart() {
+	public Items() {
 	}
 
-	public Book_in_Cart(Book book, int quantity, double price) {
+	public Items(Book book, int quantity, int price) {
 		this.book = book;
 		this.quantity = quantity;
 		this.price = price;
@@ -30,17 +30,12 @@ public class Book_in_Cart {
 		this.quantity = quantity;
 	}
 
-	public double getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(int price) {
 		this.price = price;
-	}
-
-	@Override
-	public String toString() {
-		return "Book_in_Cart [book=" + book + ", quantity=" + quantity + ", price=" + price + "]";
 	}
 	
 	

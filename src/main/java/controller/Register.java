@@ -34,7 +34,7 @@ public class Register extends HttpServlet {
 		String password = request.getParameter("password");
 		Account_DAO aDAO = new Account_DAO();
 		if (aDAO.checkRegister(email) == null) {
-			Account a = new Account(fullname, email, password, 1);
+			Account a = new Account(fullname, email, password, 1, 0);
 			aDAO.insert(a);
 			request.setAttribute("success", "Đăng ký tài khoản thành công");
 			request.setAttribute("email", email);
