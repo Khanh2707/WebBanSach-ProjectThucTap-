@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,21 +22,19 @@
 <link rel="stylesheet" href="css_private/sign_up.css">
 </head>
 <body>
-	<jsp:include page="Header.jsp" />
-	<!-- body -->
-        <div class="body">
+	<div class="body">
             <span class="sign_up__title">
-                tạo tài khoản
+                thêm tài khoản mới
             </span>
             <hr>
-            <h3 style="color: red; text-align: center; display: block; margin-top: 30px;">${requestScope.error }</h3>
             <div class="sign_up__wrapper">
                 <div class="sign_up__container">
-                    <form action="register" class="form" id="form-1">
+                	<h3 style="color: red; text-align: center;">${requestScope.error }</h3>
+                    <form action="add_account" class="form" id="form-1">
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
-                                <label for="fullName">Tên đăng nhập</label>
-                                <input type="text" name="fullName" id="fullName" placeholder="Tên">
+                                <label for="fullname_account">Fullname</label>
+                                <input type="text" name="fullname" id="fullname_account" placeholder="Fullname">
                             </div>
                             <span class="form-mesg">
 
@@ -43,8 +42,8 @@
                         </div>
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
-                                <label for="email">Email</label>
-                                <input type="text" name="email" id="email" placeholder="Email">
+                                <label for="username_account">Username</label>
+                                <input type="text" name="username" id="username_account" placeholder="Username">
                             </div>
                             <span class="form-mesg">
 
@@ -52,54 +51,54 @@
                         </div>
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
-                                <label for="password">Mật khẩu</label>
-                                <input type="password" name="password" id="password" placeholder="Mật khẩu">
+                                <label for="password_account">Password</label>
+                                <input type="text" name="password" id="password_account" placeholder="Password">
                             </div>
                             <span class="form-mesg">
 
                             </span>
                         </div>
-                        <div class="sign_up-infor-div">
-                            <div class="sign_up-infor">
-                                <label for="password_confirmation">Nhập lại mật khẩu</label>
-                                <input type="password" name="password_confirmation" id="password_confirmation"
-                                    placeholder="Nhập lại mật khẩu">
-                            </div>
+                        <div class="sign_up-infor-div invalid">
+                            <label for="" style="display: block; margin-bottom: 10px;">
+                                Role:
+                            </label>
+                            <label for="role_1">Role 1</label>
+                            <input type="radio" name="role" value="1" id="role_1" style="margin-right: 20px;">
+                            <label for="role_0">Role 0</label>
+                            <input type="radio" name="role" value="0" id="role_0">
+                            <br>
                             <span class="form-mesg">
 
                             </span>
                         </div>
                         <div class="sign_up-input_submit">
-                            <input type="submit" value="Đăng ký">
+                            <input type="submit" value="Thêm tài khoản">
                         </div>
                     </form>
                     <div class="sign_in-link_return">
-                        <a href="Sign_in.jsp">Quay về</a>
+                        <a href="list_account">Quay về</a>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- body -->
-	<jsp:include page="Footer.jsp" />
-
-	<script src="javascript/Validator.js"></script>
+    <script src="javascript/Validator.js"></script>
 	<script>
-	Validator({
-        form: `#form-1`,
-        mesg: `.form-mesg`,
-        formGroup: `.sign_up-infor-div`,
-        rules: [
-            required(`#fullName`, `Chưa nhập tên!`),
-            required(`#email`, `Chưa nhập email!`),
-            ruleEmail(`#email`, `Email không đúng định dạng!`),
-            required(`#password`, `Chưa nhập password!`),
-            rulePassword(`#password`, `Phải có chữ hoa, chữ thường, số, ký tự đặc biệt, tối thiểu 7 ký tự và tối đa 14 ký tự!`),
-            required(`#password_confirmation`, `Chưa nhập xác nhận password!`),
-            equalPassword(`#password_confirmation`, function () {
-                return document.querySelector(`#form-1 #password`).value
-            }, `Mật khẩu không trùng khớp!`),
-        ],
-    })
+		Validator({
+			form : `#form-1`,
+			mesg : `.form-mesg`,
+			formGroup : `.sign_up-infor-div`,
+			rules : [
+					required(`#fullname_account`, `Chưa nhập Fullname!`),
+					required(`#username_account`, `Chưa nhập Username!`),
+					required(`#password_account`, `Chưa nhập Password!`),
+					required(`input[name="role"]`, `Chưa chọn Role!`),
+					],
+			/*
+			submitSuccess : function(data) {
+				console.log(data)
+			}
+			*/
+		})
 	</script>
 </body>
 </html>

@@ -70,21 +70,21 @@
 	<script type="text/javascript">
 		function doDeleteBanner(id) {
 			if (confirm("Are you sure want delete " +id)) {
-				window.location = "delete_publish_company?id="+id;
+				window.location = "delete_banner?id="+id;
 			}
 		}
 	</script>
 	<script type="text/javascript">
 		function doDeleteHnb(id) {
 			if (confirm("Are you sure want delete " +id)) {
-				window.location = "delete_publish_company?id="+id;
+				window.location = "delete_hnb?id="+id;
 			}
 		}
 	</script>
 	<script type="text/javascript">
-		function doDeleteTaiKhoan(id) {
+		function doDeleteAcc(id) {
 			if (confirm("Are you sure want delete " +id)) {
-				window.location = "delete_taikhoan?id="+id;
+				window.location = "delete_account?id="+id;
 			}
 		}
 	</script>
@@ -411,7 +411,7 @@
 		                <span class="title">
 		                    Quản lý Banner
 		                </span>
-		                <a class="button_add" href="Add_Banner">
+		                <a class="button_add" href="Add_Banner.jsp">
 		                    <i class="fa-solid fa-circle-plus"></i>
 		                </a>
 		            </div>
@@ -479,7 +479,7 @@
 		                <span class="title">
 		                    Quản lý Hnb
 		                </span>
-		                <a class="button_add" href="Add_Hnb">
+		                <a class="button_add" href="Add_Hnb.jsp">
 		                    <i class="fa-solid fa-circle-plus"></i>
 		                </a>
 		            </div>
@@ -487,6 +487,9 @@
 		                <div class="list_title" style="justify-content: space-between;">
 		                    <span class="list_title_id">
 		                        Id
+		                    </span>
+		                    <span class="list_title_name">
+		                        Id Book
 		                    </span>
 		                    <span class="list_title_img">
 		                        Image
@@ -501,6 +504,9 @@
 		                        <span class="list_info_book_id">
 		                            ${o.id }
 		                        </span>
+		                        <span class="list_info_book_name">
+		                            ${o.book.id } &ensp; | &ensp; ${o.book.name }
+		                        </span>
 		                        <div class="list_info_book_img">
 		                            <img src="${o.img }" alt="">
 		                        </div>
@@ -512,36 +518,10 @@
 		                </div>
 		                </c:forEach>
 		            </div>
-		            <c:set var="page" value="${requestScope.page }" />
-		            <div class="page_product__footer">
-						<c:if test="${page > 1 }">
-							<div class="page_product__footer__change_page" id="page_product__footer__prev_page">
-								<a href="list_publish_company?page=${page - 1 }"> &lt Trang trước </a>
-							</div>
-						</c:if>
-						<c:if test="${page == 1 }">
-							<div style="visibility: hidden;" class="page_product__footer__change_page" id="page_product__footer__prev_page">
-							</div>
-						</c:if>
-						<div class="page_product__footer__number_page">
-							<c:forEach begin="${1 }" end="${requestScope.totalNumPage }" var="i">
-								<a class="${i == page ? "activeNumPage" : ""}" href="list_publish_company?page=${i }">${i }</a>
-							</c:forEach>
-						</div>
-						<c:if test="${page < totalNumPage }">
-							<div class="page_product__footer__change_page" id="page_product__footer__next_page">
-								<a href="list_publish_company?page=${page + 1 }"> Trang sau &gt </a>
-							</div>
-						</c:if>
-						<c:if test="${page == totalNumPage }">
-							<div style="visibility: hidden;" class="page_product__footer__change_page" id="page_product__footer__prev_page">
-							</div>
-						</c:if>
-					</div>
 				</div>
 			</c:if>
 			
-			<c:if test="${keySelected == 'tk'}">
+			<c:if test="${keySelected == 'acc'}">
 	        	<div class="content_book">
 		            <div class="header">
 		                <span class="title">
@@ -554,16 +534,16 @@
 		            <div class="list_book">
 		                <div class="list_title">
 		                    <span class="list_title_id">
-		                        FullName
+		                        Role
 		                    </span>
 		                    <span class="list_title_name">
-		                        Username
+		                        FullName
 		                    </span>
 		                    <span class="list_title_img">
-		                        Password
+		                        Username
 		                    </span>
 		                    <span class="list_title_price">
-		                        Role
+		                        Password
 		                    </span>
 		                    <span class="list_title_actions">
 		                        Actions
@@ -573,20 +553,20 @@
 		                <div class="div_list_info_book">
 		                    <div class="list_info_book">
 		                        <span class="list_info_book_id">
-		                            ${o.fullname }
+		                            ${o.role }
 		                        </span>
 		                        <span class="list_info_book_name">
-		                            ${o.username }
+		                            ${o.fullname }
 		                        </span>
 		                        <div class="list_info_book_img">
-		                            <span>${o.password }</span>
+		                            <span>${o.username }</span>
 		                        </div>
 		                        <span class="list_info_book_price">
-		                            ${o.role }
+		                            ${o.password }
 		                        </span>
 		                        <div class="list_info_book_actions">
 		                            <a href="update_account?id=${o.username }" class="button_update"><i class="fa-solid fa-pen"></i></a>
-		                            <a href="#" class="button_delete" onclick="doDeleteTaiKhoan('${o.username}')"><i class="fa-solid fa-trash"></i></a>
+		                            <a href="#" class="button_delete" onclick="doDeleteAcc('${o.username}')"><i class="fa-solid fa-trash"></i></a>
 		                        </div>
 		                    </div>
 		                </div>

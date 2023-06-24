@@ -1,4 +1,4 @@
-package controller.Publish_companyServ;
+package controller.HnbServ;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -7,18 +7,18 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import dal.Publish_company_DAO;
+import dal.Hnb_DAO;
 
 /**
- * Servlet implementation class Delete_Publish_company
+ * Servlet implementation class Delete_Hnb
  */
-public class Delete_Publish_company extends HttpServlet {
+public class Delete_Hnb extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Delete_Publish_company() {
+    public Delete_Hnb() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,9 +28,9 @@ public class Delete_Publish_company extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
-		Publish_company_DAO ad = new Publish_company_DAO();
-		ad.delete(id);
-		response.sendRedirect("list_publish_company");
+		Hnb_DAO hnbDAO = new Hnb_DAO();
+		hnbDAO.delete(id);
+		response.sendRedirect("list_hnb");
 	}
 
 	/**

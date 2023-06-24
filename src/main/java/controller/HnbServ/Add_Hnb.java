@@ -1,24 +1,28 @@
-package controller.Publish_companyServ;
+package controller.HnbServ;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Book;
+import model.Hnb;
+
 import java.io.IOException;
 
-import dal.Publish_company_DAO;
+import dal.Book_DAO;
+import dal.Hnb_DAO;
 
 /**
- * Servlet implementation class Delete_Publish_company
+ * Servlet implementation class Add_Hnb
  */
-public class Delete_Publish_company extends HttpServlet {
+public class Add_Hnb extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Delete_Publish_company() {
+    public Add_Hnb() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,9 +32,21 @@ public class Delete_Publish_company extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
-		Publish_company_DAO ad = new Publish_company_DAO();
-		ad.delete(id);
-		response.sendRedirect("list_publish_company");
+		String img = request.getParameter("img");
+		String id_book = request.getParameter("id_book");
+		Hnb_DAO hnbDAO = new Hnb_DAO();
+		Hnb hnb = hnbDAO.getHnbById(id);
+		if (hnb == null) {
+			Book_DAO bDAO = new Book_DAO();
+			Book b = bDAO.getBookById(id_book);
+			Hnb hnbNew = new Hnb(id, img, b);
+			hnbDAO.insert(hnbNew);
+			response.sendRedirect("list_hnb");
+		}
+		else {
+			request.setAttribute("error", id + " existed!");
+			request.getRequestDispatcher("Add_Hnb.jsp").forward(request, response);
+		}
 	}
 
 	/**

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,15 +42,15 @@
                         </div>
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
-                                <label for="name_banner">Name Banner</label>
-                                <input type="text" name="name" id="name_banner" placeholder="Name Banner">
+                                <label for="name_banner">Image Banner</label>
+                                <input type="text" name="name" id="name_banner" placeholder="Image Banner">
                             </div>
                             <span class="form-mesg">
 
                             </span>
                         </div>
                         <div class="sign_up-input_submit">
-                            <input type="submit" value="Thêm tác giả">
+                            <input type="submit" value="Thêm banner">
                         </div>
                     </form>
                     <div class="sign_in-link_return">
@@ -65,8 +66,8 @@
 			mesg : `.form-mesg`,
 			formGroup : `.sign_up-infor-div`,
 			rules : [
-					required(`#id_category`, `Chưa nhập Id!`),
-					required(`#name_category`, `Chưa nhập Name!`),
+					required(`#id_banner`, `Chưa nhập Id!`),
+					required(`#name_banner`, `Chưa nhập Name!`),
 					],
 			/*
 			submitSuccess : function(data) {

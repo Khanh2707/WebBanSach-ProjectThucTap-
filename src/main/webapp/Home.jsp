@@ -501,7 +501,6 @@
 			<jsp:useBean id="banner" class="dal.Banner_DAO"></jsp:useBean>
 			<c:forEach items="${banner.all }" var="bn">
 				<a href="listbookfilterbycategoryid?id_category=${0 }"><img src="${bn.img }" alt=""></a>
-				<a href="listbookfilterbycategoryid?id_category=${0 }"><img src="${bn.img }" alt=""></a>
 			</c:forEach>
 			</div>
 			<!-- body__slide_banner -->
@@ -625,10 +624,10 @@
 	                            <span class="div_out-label_sale">-${o.ratio_sale }%</span>
 	                        </div>
 	                        </c:forEach>
-	                    </div>
-                    	<!-- body__wrapper_product__button_see_more -->
-                        <div class="wrapper_product__button_see_all" 
+	                        <!-- body__wrapper_product__button_see_more -->
+                        <div class="wrapper_product__button_see_all"
                         style="
+                        width: 100%;  
                         text-align: center; 
                         padding-top: 20px; 
                         padding-bottom: 100px;">
@@ -640,6 +639,8 @@
                             </form>
                         </div>
                         <!-- body__wrapper_product__button_see_more -->
+	                    </div>
+                    	
                     </div>
                     
 				</div>

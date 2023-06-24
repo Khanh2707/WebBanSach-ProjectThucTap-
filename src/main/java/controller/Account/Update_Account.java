@@ -1,4 +1,4 @@
-package controller;
+package controller.Account;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,15 +12,15 @@ import java.io.IOException;
 import dal.Account_DAO;
 
 /**
- * Servlet implementation class Register
+ * Servlet implementation class Update_Account
  */
-public class Register extends HttpServlet {
+public class Update_Account extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Register() {
+    public Update_Account() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,29 +29,33 @@ public class Register extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String fullname = request.getParameter("fullName");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
+		String username = request.getParameter("username");
 		Account_DAO aDAO = new Account_DAO();
-		if (aDAO.checkRegister(email) == null) {
-			Account a = new Account(fullname, email, password, 1);
-			aDAO.insert(a);
-			request.setAttribute("success", "Đăng ký tài khoản thành công");
-			request.setAttribute("email", email);
-			request.getRequestDispatcher("Sign_in.jsp").forward(request, response);
-		}
-		else {
-			request.setAttribute("error", "Tài khoản đã tồn tại");
-			request.getRequestDispatcher("Sign_up.jsp").forward(request, response);
-		}
+		Account a = aDAO.getAccountByUsername(username);
+		request.setAttribute("account", a);
+		request.getRequestDispatcher("Update_Account.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		String fullname = request.getParameter("fullname");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		String role_raw = request.getParameter("role");
+		int role = -1;
+		try {
+			role = Integer.parseInt(role_raw);
+		}
+		catch (NumberFormatException ex) {
+			System.out.println(ex);
+		}
+		Account_DAO aDAO = new Account_DAO();
+		Account aNew = new Account(fullname, username, password, role);
+		aDAO.update(aNew);
+		response.sendRedirect("list_account");
 	}
 
 }

@@ -24,17 +24,17 @@
 <body>
 	<div class="body">
             <span class="sign_up__title">
-                thêm thể loại mới
+                thêm ảnh hnb mới
             </span>
             <hr>
             <div class="sign_up__wrapper">
                 <div class="sign_up__container">
                 	<h3 style="color: red; text-align: center;">${requestScope.error }</h3>
-                    <form action="add_category" class="form" id="form-1">
+                    <form action="add_hnb" class="form" id="form-1">
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
-                                <label for="id_category">Id Category</label>
-                                <input type="text" name="id" id="id_category" placeholder="Id Category">
+                                <label for="id_hnb">Id Hnb</label>
+                                <input type="text" name="id" id="id_hnb" placeholder="Id Hnb">
                             </div>
                             <span class="form-mesg">
 
@@ -42,19 +42,40 @@
                         </div>
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
-                                <label for="name_category">Name Category</label>
-                                <input type="text" name="name" id="name_category" placeholder="Name Category">
+                                <label for="img_hnb">Image Hnb</label>
+                                <input type="text" name="img" id="img_hnb" placeholder="Image Hnb">
                             </div>
                             <span class="form-mesg">
 
                             </span>
                         </div>
+                        <jsp:useBean id="book" class="dal.Book_DAO" scope="page">
+	                        <div class="sign_up-infor-div">
+	                            <label for="id_book" style="display: block; margin-bottom: 10px;">
+	                                Id Book
+	                            </label>
+	                            <select name="id_book" id="id_book" style="height: 40px; width: 308px; text-align: center;">
+	                                <option value="">
+	                                    --- Choose Id Book ---
+	                                </option>
+	                                <c:forEach items="${book.all }" var="b">
+		                                <option value="${b.id }">
+		                                    ${b.id } &ensp; | &ensp; ${b.name }
+		                                </option>
+	                                </c:forEach>
+	                            </select>
+	                            <br>
+	                            <span class="form-mesg">
+	
+	                            </span>
+	                        </div>
+                        </jsp:useBean>
                         <div class="sign_up-input_submit">
-                            <input type="submit" value="Thêm thể loại">
+                            <input type="submit" value="Thêm Hnb">
                         </div>
                     </form>
                     <div class="sign_in-link_return">
-                        <a href="list_category">Quay về</a>
+                        <a href="list_hnb">Quay về</a>
                     </div>
                 </div>
             </div>
@@ -66,8 +87,9 @@
 			mesg : `.form-mesg`,
 			formGroup : `.sign_up-infor-div`,
 			rules : [
-					required(`#id_category`, `Chưa nhập Id!`),
-					required(`#name_category`, `Chưa nhập Name!`),
+					required(`#id_hnb`, `Chưa nhập Id!`),
+					required(`#img_hnb`, `Chưa nhập Image!`),
+					required(`#id_book`, `Chưa nhập Id Book!`),
 					],
 			/*
 			submitSuccess : function(data) {

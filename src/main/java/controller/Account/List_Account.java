@@ -34,7 +34,7 @@ public class List_Account extends HttpServlet {
 		ArrayList<Account> list = aDAO.getAll();
 		request.setAttribute("data", list);
 		
-		request.setAttribute("keySelected","tk");
+		request.setAttribute("keySelected","acc");
 		
 		request.getRequestDispatcher("AdminPage.jsp").forward(request, response);
 	}

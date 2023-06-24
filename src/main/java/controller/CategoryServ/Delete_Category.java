@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import dal.Banner_DAO;
 import dal.Category_DAO;
 
 /**
@@ -28,9 +29,8 @@ public class Delete_Category extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
-		System.out.println(id);
-		Category_DAO ad = new Category_DAO();
-		ad.delete(id);
+		Category_DAO cDAO = new Category_DAO();
+		cDAO.delete(id);
 		response.sendRedirect("list_category");
 	}
 

@@ -114,7 +114,7 @@
 	                                </option>
 	                                <c:forEach items="${a.all }" var="o">
 		                                <option value="${o.id }">
-		                                    ${o.name }
+		                                    ${o.id } - ${o.name }
 		                                </option>
 	                                </c:forEach>
 	                            </select>

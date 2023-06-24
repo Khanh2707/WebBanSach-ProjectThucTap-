@@ -24,17 +24,18 @@
 <body>
 	<div class="body">
             <span class="sign_up__title">
-                thêm thể loại mới
+                Sửa thông tin banner
             </span>
             <hr>
             <div class="sign_up__wrapper">
                 <div class="sign_up__container">
                 	<h3 style="color: red; text-align: center;">${requestScope.error }</h3>
-                    <form action="add_category" class="form" id="form-1">
+                	<c:set var="banner" value="${requestScope.banner }" />
+                    <form action="update_banner" method="post" class="form" id="form-1">
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
-                                <label for="id_category">Id Category</label>
-                                <input type="text" name="id" id="id_category" placeholder="Id Category">
+                                <label for="id_banner">Id Banner</label>
+                                <input type="text" name="id" id="id_banner" placeholder="Id Banner" value="${banner.id }" readonly="readonly"">
                             </div>
                             <span class="form-mesg">
 
@@ -42,19 +43,19 @@
                         </div>
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
-                                <label for="name_category">Name Category</label>
-                                <input type="text" name="name" id="name_category" placeholder="Name Category">
+                                <label for="name_banner">Image Banner</label>
+                                <input type="text" name="name" id="name_banner" placeholder="Image Banner" value="${banner.img }">
                             </div>
                             <span class="form-mesg">
 
                             </span>
                         </div>
                         <div class="sign_up-input_submit">
-                            <input type="submit" value="Thêm thể loại">
+                            <input type="submit" value="Thay đổi">
                         </div>
                     </form>
                     <div class="sign_in-link_return">
-                        <a href="list_category">Quay về</a>
+                        <a href="list_banner">Quay về</a>
                     </div>
                 </div>
             </div>
@@ -66,8 +67,8 @@
 			mesg : `.form-mesg`,
 			formGroup : `.sign_up-infor-div`,
 			rules : [
-					required(`#id_category`, `Chưa nhập Id!`),
-					required(`#name_category`, `Chưa nhập Name!`),
+					required(`#id_banner`, `Chưa nhập Id!`),
+					required(`#name_banner`, `Chưa nhập Name!`),
 					],
 			/*
 			submitSuccess : function(data) {

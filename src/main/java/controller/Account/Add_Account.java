@@ -1,24 +1,26 @@
-package controller.Publish_companyServ;
+package controller.Account;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Account;
+
 import java.io.IOException;
 
-import dal.Publish_company_DAO;
+import dal.Account_DAO;
 
 /**
- * Servlet implementation class Delete_Publish_company
+ * Servlet implementation class Add_Account
  */
-public class Delete_Publish_company extends HttpServlet {
+public class Add_Account extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Delete_Publish_company() {
+    public Add_Account() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,10 +29,28 @@ public class Delete_Publish_company extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
-		Publish_company_DAO ad = new Publish_company_DAO();
-		ad.delete(id);
-		response.sendRedirect("list_publish_company");
+		String fullname = request.getParameter("fullname");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		String role_raw = request.getParameter("role");
+		int role = -1;
+		try {
+			role = Integer.parseInt(role_raw);
+		}
+		catch (NumberFormatException ex) {
+			System.out.println(ex);
+		}
+		Account_DAO aDAO = new Account_DAO();
+		Account a = aDAO.getAccountByUsername(username);
+		if (a == null) {
+			Account aNew = new Account(fullname, username, password, role);
+			aDAO.insert(aNew);
+			response.sendRedirect("list_account");
+		}
+		else {
+			request.setAttribute("error", username + " existed!");
+			request.getRequestDispatcher("Add_Account.jsp").forward(request, response);
+		}
 	}
 
 	/**

@@ -29,13 +29,14 @@
             </span>
             <hr>
             <h3 style="color: red; text-align: center; display: block; margin-top: 30px;">${requestScope.error }</h3>
+            <h3 style="color: green; text-align: center; display: block; margin-top: 30px;">${requestScope.success }</h3>
             <div class="sign_up__wrapper">
                 <div class="sign_up__container">
                     <form action="login" method="post" class="form" id="form-1">
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
                                 <label for="email">Tên đăng nhập</label>
-                                <input type="text" name="email" id="email" placeholder="Email">
+                                <input type="text" name="email" id="email" placeholder="Email" value="${requestScope.email }">
                             </div>
                             <span class="form-mesg">
 

@@ -1,24 +1,26 @@
-package controller.Publish_companyServ;
+package controller.BannerServ;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Banner;
+
 import java.io.IOException;
 
-import dal.Publish_company_DAO;
+import dal.Banner_DAO;
 
 /**
- * Servlet implementation class Delete_Publish_company
+ * Servlet implementation class Add_Banner
  */
-public class Delete_Publish_company extends HttpServlet {
+public class Add_Banner extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Delete_Publish_company() {
+    public Add_Banner() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,9 +30,18 @@ public class Delete_Publish_company extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
-		Publish_company_DAO ad = new Publish_company_DAO();
-		ad.delete(id);
-		response.sendRedirect("list_publish_company");
+		String name = request.getParameter("name");
+		Banner_DAO bnDAO = new Banner_DAO();
+		Banner bn = bnDAO.getBannerById(id);
+		if (bn == null) {
+			Banner bnNew = new Banner(id, name);
+			bnDAO.insert(bnNew);
+			response.sendRedirect("list_banner");
+		}
+		else {
+			request.setAttribute("error", id + " existed!");
+			request.getRequestDispatcher("Add_Banner.jsp").forward(request, response);
+		}
 	}
 
 	/**
