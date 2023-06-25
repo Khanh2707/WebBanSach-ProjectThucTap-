@@ -576,6 +576,7 @@
 						</li>
 					</ul>
 					
+					<form action="" name="f" method="post">
 					<!-- body__wrapper_product__menu -->
 					<div class="wrapper_product__list_product-container_and_button_see_all">
 						<!-- body__wrapper_product__list_product -->
@@ -613,10 +614,10 @@
 	                                    <div class="eye">
 	                                        <i class="fa-solid fa-eye"></i>
 	                                    </div>
-	                                    <div>
+	                                    <div onclick="buy('${o.id}','${'toCart' }')">
 	                                        <i class="fa-solid fa-bag-shopping"></i>
 	                                    </div>
-	                                    <div>
+	                                    <div onclick="buy('${o.id}','${'home' }')">
 	                                        <i class="fa-solid fa-cart-shopping"></i>
 	                                    </div>
                                 	</div>
@@ -642,7 +643,7 @@
 	                    </div>
                     	
                     </div>
-                    
+                    </form>
 				</div>
 			</div>
 			<!-- body__wrapper_product -->
@@ -721,5 +722,11 @@
 		src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 	<script src="javascript/slide.js"></script>
 	<script src="javascript/active_link.js"></script>
+	<script type="text/javascript">
+		function buy(id,key) {
+			document.f.action = "buy?id="+id+"&num=1&key="+key;
+			document.f.submit();
+		}
+	</script>
 </body>
 </html>

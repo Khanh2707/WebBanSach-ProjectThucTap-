@@ -32,6 +32,8 @@
 	<!-- body -->
 	<div class="body">
 		<c:set var="o" value="${requestScope.book }" />
+		<c:set var="id" value="${o.id }" />
+		<c:set var="id_author" value="${o.author.id }" />
 		<div class="body__path_category_product">
 			<a href="Home.jsp"
 			onMouseOver="this.style.color='red'" 
@@ -154,6 +156,7 @@
 			<div class="books_same_author__title">
 				<span> SÁCH CÙNG TÁC GIẢ </span>
 			</div>
+			<form action="" name="f" method="post">
 			<div class="books_same_author-container_product">
 				<c:forEach items="${requestScope.listbooknotinidbook }" var="o">
 				<c:set var="id" value="${o.id }" />
@@ -182,10 +185,10 @@
 	                        <div class="eye">
 	                            <i class="fa-solid fa-eye"></i>
 	                        </div>
-	                        <div>
+	                        <div onclick="buy('${id}','${'toCart' }')">
 	                            <i class="fa-solid fa-bag-shopping"></i>
 	                        </div>
-	                        <div>
+	                        <div onclick="buy('${id}','${'detail' }')">
 	                            <i class="fa-solid fa-cart-shopping"></i>
 	                        </div>
                          </div>
@@ -194,9 +197,18 @@
 				</div>
 				</c:forEach>
 			</div>
+			<input style="display: none;" type="text" name="id" value="${id }">
+			<input style="display: none;" type="text" name="id_author" value="${id_author }">
+			</form>
 		</div>
 	</div>
 	<!-- body -->
 	<jsp:include page="Footer.jsp" />
+	<script type="text/javascript">
+		function buy(id,key) {
+			document.f.action = "buy?id="+id+"&num=1&key="+key;
+			document.f.submit();
+		}
+	</script>
 </body>
 </html>

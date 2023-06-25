@@ -128,11 +128,11 @@
 	                            <div class="eye">
 	                                <i class="fa-solid fa-eye"></i>
 	                            </div>
-	                            <div onclick="buy('${id}','toCart')">
+	                            <div onclick="buy('${id}','${'toCart' }')">
 	                                <i class="fa-solid fa-bag-shopping"></i>
 	                            </div>
 
-	                            <div onclick="buy('${id}','filter')">
+	                            <div onclick="buy('${id}','${'filter' }')">
 	                                <i class="fa-solid fa-cart-shopping"></i>
 	                            </div>
 

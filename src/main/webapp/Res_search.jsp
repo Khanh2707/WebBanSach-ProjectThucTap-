@@ -35,6 +35,7 @@
 				<span class="key_search"> Kết quả tìm kiếm cho </span>
                 <span class="value_search"> "${requestScope.keySearch }" </span>
 			</div>
+			<form action="" name="f" method="post">
 			<div class="res_search_container">
                 <c:forEach items="${requestScope.listB }" var="o">
 				<div class="list_product-div_out">
@@ -64,22 +65,30 @@
 							</div>
 						</div>
 						<div class="div_in__choice_hover">
-	                                    <div class="eye">
-	                                        <i class="fa-solid fa-eye"></i>
-	                                    </div>
-	                                    <div>
-	                                        <i class="fa-solid fa-bag-shopping"></i>
-	                                    </div>
-	                                    <div>
-	                                        <i class="fa-solid fa-cart-shopping"></i>
-	                                    </div>
-                                	</div>
+	                        <div class="eye">
+	                            <i class="fa-solid fa-eye"></i>
+	                        </div>
+	                        <div onclick="buy('${o.id}','${'toCart' }')">
+	                            <i class="fa-solid fa-bag-shopping"></i>
+	                        </div>
+	                        <div onclick="buy('${o.id}','${'res_search' }')">
+	                            <i class="fa-solid fa-cart-shopping"></i>
+	                        </div>
+                        </div>
 					</div>
 					<span class="div_out-label_sale">-${o.ratio_sale }%</span>
 				</div>
 				</c:forEach>
 			</div>
+			<input style="display: none;" type="text" name="input_search" value="${requestScope.keySearch }">
+			</form>
         </div>
         <jsp:include page="Footer.jsp" />
+        <script type="text/javascript">
+			function buy(id,key) {
+				document.f.action = "buy?id="+id+"&num=1&key="+key;
+				document.f.submit();
+			}
+		</script>
 </body>
 </html>

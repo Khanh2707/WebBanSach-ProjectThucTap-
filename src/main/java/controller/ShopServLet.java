@@ -62,13 +62,7 @@ public class ShopServLet extends HttpServlet {
 		session.setAttribute("size", n);
 		request.setAttribute("data", list);
 		
-		String key = request.getParameter("key");
-		if (key == "filter") {
-			request.getRequestDispatcher("listselect").forward(request, response);
-		}
-		else if (key == "toCart") {
-			request.getRequestDispatcher("show").forward(request, response);
-		}
+		request.getRequestDispatcher("listselect").forward(request, response);
 	}
 
 	/**
@@ -102,7 +96,24 @@ public class ShopServLet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("size", n);
 		request.setAttribute("data", list);
-		request.getRequestDispatcher("listselect").forward(request, response);
+
+		String key = request.getParameter("key");
+		
+		if (key.equals("filter")) {
+			request.getRequestDispatcher("listselect").forward(request, response);
+		}
+		else if (key.equals("home")) {
+			request.getRequestDispatcher("Home.jsp").forward(request, response);
+		}
+		else if (key.equals("detail")) {
+			request.getRequestDispatcher("detailbook").forward(request, response);
+		}
+		else if (key.equals("res_search")) {
+			request.getRequestDispatcher("listsearch").forward(request, response);
+		}
+		else if (key.equals("toCart")) {
+			response.sendRedirect("show");
+		}
 	}
 
 }
