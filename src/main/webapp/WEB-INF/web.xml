@@ -429,4 +429,14 @@
     <servlet-name>Process</servlet-name>
     <url-pattern>/process</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CheckPay</display-name>
+    <servlet-name>CheckPay</servlet-name>
+    <servlet-class>controller.CheckPay</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckPay</servlet-name>
+    <url-pattern>/checkpay</url-pattern>
+  </servlet-mapping>
 </web-app>

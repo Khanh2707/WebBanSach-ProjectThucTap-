@@ -88,15 +88,54 @@ public class Process extends HttpServlet {
 		c.setMaxAge(60*60);
 		response.addCookie(c);
 		request.setAttribute("cart", cart);
-		request.getRequestDispatcher("MyCart.jsp").forward(request, response);
+		request.getRequestDispatcher("Cart.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		Book_DAO bDAO = new Book_DAO();
+		ArrayList<Book> list = bDAO.getAll();
+		Cookie[] arrCookies = request.getCookies();
+		
+		String txtCookies = "";
+		if (arrCookies != null) {
+			for (Cookie cookie : arrCookies) {
+				if (cookie.getName().equals("cart")) {
+					txtCookies += cookie.getValue();
+					cookie.setMaxAge(0);
+					response.addCookie(cookie);
+				}
+			}
+		}
+		
+		String id = request.getParameter("id");
+		
+		String[] ids = txtCookies.split("/");
+		String out = "";
+		
+		for (int i = 0; i < ids.length; i++) {
+			String[] s = ids[i].split(":");
+			if (!s[0].equals(id)) {
+				if (out.isEmpty()) {
+					out = ids[i];
+				}
+				else {
+					out+="/"+ids[i];
+				}
+			}
+		}
+		
+		if (!out.isEmpty()) {
+			Cookie c = new Cookie("cart", out);
+			c.setMaxAge(60*60*24);
+			response.addCookie(c);
+		}
+		
+		Cart cart = new Cart(out, list);
+		request.setAttribute("cart", cart);
+		request.getRequestDispatcher("Cart.jsp").forward(request, response);
 	}
 
 }

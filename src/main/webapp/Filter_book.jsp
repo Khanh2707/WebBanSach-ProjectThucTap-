@@ -48,6 +48,7 @@
 	<c:set var="keyOrderBy" value="${requestScope.keyOrderBy }" />
 	<c:set var="nameOrderBy" value="${requestScope.nameOrderBy }" />
 	<c:set var="keyselected" value="${requestScope.keyselected }" />
+	<c:set var="page" value="${requestScope.page }" />
 	<div class="body">
 		<div class="body__path_category">
 			<a href="Home.jsp">Trang chủ</a> 
@@ -73,7 +74,6 @@
 						<span>Sắp xếp theo: </span>
 						<form action="listselect" id="form_select">
 							<select name="list_select" id="list_select" onchange="changeSelect()">
-								
 								<jsp:useBean id="s" class="dal.Selected_DAO" scope="page"></jsp:useBean>
 								<c:forEach items="${s.all }" var="o">
 									<option ${(keyselected == o.id) ? 'selected' : ''} value="${o.id }">${o.name }</option>
@@ -84,6 +84,11 @@
 						</form>
 					</div>
 				</div>
+				<form action="" name="f" method="post">
+				<input style="display: none;" type="text" name="keyOrderBy" value="${keyOrderBy }">
+				<input style="display: none;" type="text" name="nameOrderBy" value="${nameOrderBy }">
+				<input style="display: none;" type="text" name="list_select" value="${keyselected }">
+				<input style="display: none;" type="text" name="page" value="${page }">
 				<div class="page_product__body">
 					
 					<c:if test="${listBook == null || listBook.size() == 0 }">
@@ -119,20 +124,34 @@
 		                            <span class="div_in-price-origin"><del><fmt:formatNumber value="${origin_price }" /><ins>đ</ins></del></span>
 								</div>
 							</div>
+							<div class="div_in__choice_hover">
+	                            <div class="eye">
+	                                <i class="fa-solid fa-eye"></i>
+	                            </div>
+	                            <div onclick="buy('${id}','toCart')">
+	                                <i class="fa-solid fa-bag-shopping"></i>
+	                            </div>
+
+	                            <div onclick="buy('${id}','filter')">
+	                                <i class="fa-solid fa-cart-shopping"></i>
+	                            </div>
+
+                            </div>
 						</div>
 						<span class="div_out-label_sale">-${o.ratio_sale }%</span>
 					</div>
 					</c:forEach>
 					</c:if>
 				</div>
-				<c:set var="page" value="${requestScope.page }" />
+				</form>
+				
 				<c:if test="">
 					
 				</c:if>
 				<div class="page_product__footer">
 					<c:if test="${page > 1 }">
 						<div class="page_product__footer__change_page" id="page_product__footer__prev_page">
-							<a href="listselect?page=${page - 1 }&id_category=${nameOrderBy == "all" ? "0" : nameOrderBy}&list_select=${keyselected }&keyOrderBy=${keyOrderBy }&nameOrderBy=${nameOrderBy }"> &lt Trang trước </a>
+							<a href="listselect?page=${page - 1 }&id_category=${nameOrderBy == 'all' ? '0' : nameOrderBy}&list_select=${keyselected }&keyOrderBy=${keyOrderBy }&nameOrderBy=${nameOrderBy }"> &lt Trang trước </a>
 						</div>
 					</c:if>
 					<c:if test="${page == 1 }">
@@ -142,16 +161,16 @@
 					<div class="page_product__footer__number_page">
 						<c:forEach begin="${1 }" end="${requestScope.totalNumPage }" var="i">
 							<c:if test="${keyOrderBy == 'all' || keyOrderBy == 'category'}">
-								<a class="${i == page ? "activeNumPage" : ""}" href="listselect?page=${i }&id_category=${nameOrderBy == "all" ? "0" : nameOrderBy}&list_select=${keyselected }&keyOrderBy=${keyOrderBy }&nameOrderBy=${nameOrderBy }">${i }</a>
+								<a class="${i == page ? "activeNumPage" : ""}" href="listselect?page=${i }&id_category=${nameOrderBy == 'all' ? '0' : nameOrderBy}&list_select=${keyselected }&keyOrderBy=${keyOrderBy }&nameOrderBy=${nameOrderBy }">${i }</a>
 							</c:if>
 							<c:if test="${keyOrderBy == 'author'}">
-								<a class="${i == page ? "activeNumPage" : ""}" href="listselect?page=${i }&id_category=${nameOrderBy == "all" ? "0" : nameOrderBy}&list_select=${keyselected }&keyOrderBy=${keyOrderBy }&nameOrderBy=${nameOrderBy }">${i }</a>
+								<a class="${i == page ? "activeNumPage" : ""}" href="listselect?page=${i }&id_category=${nameOrderBy == 'all' ? '0' : nameOrderBy}&list_select=${keyselected }&keyOrderBy=${keyOrderBy }&nameOrderBy=${nameOrderBy }">${i }</a>
 							</c:if>
 						</c:forEach>
 					</div>
 					<c:if test="${page < totalNumPage }">
 						<div class="page_product__footer__change_page" id="page_product__footer__next_page">
-							<a href="listselect?page=${page + 1 }&id_category=${nameOrderBy == "all" ? "0" : nameOrderBy}&list_select=${keyselected }&keyOrderBy=${keyOrderBy }&nameOrderBy=${nameOrderBy }"> Trang sau &gt </a>
+							<a href="listselect?page=${page + 1 }&id_category=${nameOrderBy == 'all' ? '0' : nameOrderBy}&list_select=${keyselected }&keyOrderBy=${keyOrderBy }&nameOrderBy=${nameOrderBy }"> Trang sau &gt </a>
 						</div>
 					</c:if>
 					<c:if test="${page == totalNumPage }">
@@ -165,5 +184,11 @@
 	<!-- body -->
 	<jsp:include page="Footer.jsp" />
 	<script src="javascript/active_link.js"></script>
+	<script type="text/javascript">
+		function buy(id,key) {
+			document.f.action = "buy?id="+id+"&num=1&key="+key;
+			document.f.submit();
+		}
+	</script>
 </body>
 </html>

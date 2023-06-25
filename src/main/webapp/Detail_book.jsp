@@ -178,6 +178,17 @@
 		                        <span class="div_in-price-origin"><del><fmt:formatNumber value="${origin_price }" /><ins>đ</ins></del></span>
 							</div>
 						</div>
+						<div class="div_in__choice_hover">
+	                        <div class="eye">
+	                            <i class="fa-solid fa-eye"></i>
+	                        </div>
+	                        <div>
+	                            <i class="fa-solid fa-bag-shopping"></i>
+	                        </div>
+	                        <div>
+	                            <i class="fa-solid fa-cart-shopping"></i>
+	                        </div>
+                         </div>
 					</div>
 					<span class="div_out-label_sale">-${o.ratio_sale }%</span>
 				</div>

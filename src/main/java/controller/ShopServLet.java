@@ -6,6 +6,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Book;
 import model.Cart;
 import model.Items;
@@ -48,16 +49,26 @@ public class ShopServLet extends HttpServlet {
 		
 		Cart cart = new Cart(txtCookies, list);
 		ArrayList<Items> listItems = cart.getItems();
-		int n;
+		int n = 0;
 		if (listItems != null) {
-			n = listItems.size();
+			for (Items items : listItems) {				
+				n += items.getQuantity();
+			}
 		}
 		else {
 			n = 0;
 		}
-		request.setAttribute("size", n);
+		HttpSession session = request.getSession();
+		session.setAttribute("size", n);
 		request.setAttribute("data", list);
-		request.getRequestDispatcher("MyShop.jsp").forward(request, response);
+		
+		String key = request.getParameter("key");
+		if (key == "filter") {
+			request.getRequestDispatcher("listselect").forward(request, response);
+		}
+		else if (key == "toCart") {
+			request.getRequestDispatcher("show").forward(request, response);
+		}
 	}
 
 	/**
@@ -79,16 +90,19 @@ public class ShopServLet extends HttpServlet {
 		
 		Cart cart = new Cart(txtCookies, list);
 		ArrayList<Items> listItems = cart.getItems();
-		int n;
+		int n = 0;
 		if (listItems != null) {
-			n = listItems.size();
+			for (Items items : listItems) {				
+				n += items.getQuantity();
+			}
 		}
 		else {
 			n = 0;
 		}
-		request.setAttribute("size", n);
+		HttpSession session = request.getSession();
+		session.setAttribute("size", n);
 		request.setAttribute("data", list);
-		request.getRequestDispatcher("MyShop.jsp").forward(request, response);
+		request.getRequestDispatcher("listselect").forward(request, response);
 	}
 
 }

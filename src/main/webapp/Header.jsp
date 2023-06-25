@@ -96,7 +96,8 @@
 			<div class="header__search-container">
 				<div class="header__logo">
 					<a href="Home.jsp"><img src="IMG/IMG_Logo/Karma-logo.png"
-						alt=""></a>
+						alt="">
+					</a>
 				</div>
 				<div class="header__search_bar">
 					<form action="listsearch" id="formSearch" style="display: flex">
@@ -135,51 +136,64 @@
 					</form>
 				</div>
 				<div class="header__cart">
-					<a href="Cart.jsp" class="header__cart-link">
+					<a href="show" class="header__cart-link">
 						<div class="cart__cart_badge">
-							<i class="fa-solid fa-cart-plus fa-2xl"></i> <span>2</span>
+							<i class="fa-solid fa-cart-plus fa-2xl"></i> 
+							<span>${sessionScope.size }</span>
 						</div>
 						<div class="cart__text">
-							<span class="cart_text">Giỏ hàng</span><br> <span>2</span> <span>sản
-								phẩm</span>
+							<span class="cart_text">Giỏ hàng</span><br> 
+							<span>${sessionScope.size }</span> 
+							<span>sản phẩm</span>
 						</div>
 					</a>
 					<!-- No product: cart__cart_badge--hover--no_product -->
 					<!-- Has product: cart__cart_badge--hover--has_product -->
-					<div
-						class="cart__cart_badge--hover cart__cart_badge--hover--has_product">
+					<div class="cart__cart_badge--hover cart__cart_badge--hover--no_product">
 						<img class="cart__cart_badge--hover--no_product-img"
-							src="IMG/IMG_EmptyCart/empty_cart.jpg" alt=""> <span
-							class="cart__cart_badge--hover--no_product-msg"> Chưa có
-							sản phẩm </span>
+							src="IMG/IMG_EmptyCart/empty_cart.jpg" alt=""> 
+							<span class="cart__cart_badge--hover--no_product-msg"> 
+								Chưa có sản phẩm 
+							</span>
 
 						<header class="cart_badge__header">
-							<span>Số lượng sản phẩm: </span> <span>2</span>
+							<span>Số lượng sản phẩm: </span> 
+							<span>${sessionScope.size }</span>
 						</header>
 						<ul class="cart_badge__list">
 							<li class="cart_badge__items">
 								<div class="cart_badge__items-img">
 									<a href="detail_product.html"><img
 										src="IMG/IMG_Book/Kinh Tế/Chấn Hưng Nhật Bản/chan_hung_nhat_ban.jpg"
-										alt=""></a>
+										alt="">
+									</a>
 								</div>
 								<div class="cart_badge__items-info">
 									<a class="cart_badge__items-name" href="detail_product.html">
-										Chấn Hưng Nhật Bản </a>
+										Chấn Hưng Nhật Bản 
+									</a>
 									<div class="cart_badge__items-description">
 										<span class="items-description-version"> Bản thường </span> <br>
 										<span class="items-description-quantity"> 154,000 x 2 </span>
 									</div>
-								</div> <span class="cart_badge__items-times"><a href=""><i
-										class="fa-solid fa-circle-xmark"></i></a></span>
+								</div> 
+								<span class="cart_badge__items-times">
+									<a href=""><i class="fa-solid fa-circle-xmark"></i></a>
+								</span>
 							</li>
 						</ul>
 						<div class="cart_badge__capital_sum">
-							<span>Tổng tiền: </span> <span>154,000<ins>đ</ins></span>
+							<span>
+								Tổng tiền: 
+							</span> 
+							<span>
+								154,000<ins>đ</ins>
+							</span>
 						</div>
-						<a href="" class="wrapper_test"> <span> Thanh toán <i
-								class="fa-solid fa-chevron-right"></i>
-						</span>
+						<a href="" class="wrapper_test"> 
+							<span> 
+								Thanh toán <i class="fa-solid fa-chevron-right"></i>
+							</span>
 						</a>
 					</div>
 				</div>

@@ -24,7 +24,7 @@
 <body>
 	<p id="bag">
 		<img alt="" src="IMG/IMG_EmptyCart/empty_cart.jpg" style="width: 50px;" height="50px;">
-		<a href="show">My Bag (${requestScope.size }) items</a>
+		<a href="show">My Bag (${sessionScope.size }) items</a>
 	</p>
 	<h1>List of Book</h1>
 	<form action="" name="f" method="post">
