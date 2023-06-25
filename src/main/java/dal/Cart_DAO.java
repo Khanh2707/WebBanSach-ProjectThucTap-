@@ -3,6 +3,7 @@ package dal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import model.Account;
 
@@ -26,6 +27,4 @@ public class Cart_DAO extends DBContext {
 		}
 		return null;
 	}
-	
-	
 }

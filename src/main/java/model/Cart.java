@@ -23,7 +23,7 @@ public class Cart {
 	
 	private Items getItemsById(String id) {
 		for (Items items2 : items) {
-			if (items2.getBook().getId() == id) {
+			if (items2.getBook().getId().equals(id)) {
 				return items2;
 			}
 		}
@@ -54,5 +54,34 @@ public class Cart {
 		}
 		
 		return t;
+	}
+	
+	private Book getBookById(String id, ArrayList<Book> list) {
+		for (Book book : list) {
+			if (book.getId().equals(id)) {
+				return book;
+			}
+		}
+		return null;
+	}
+	
+	public Cart(String txt, ArrayList<Book> list) {
+		items = new ArrayList<>();
+		try {
+			if (txt != null && txt.length() != 0) {
+				String[] s = txt.split("/");
+				for (String string : s) {
+					String[] n = string.split(":");
+					String id = n[0];
+					int quantity = Integer.parseInt(n[1]);
+					Book b = getBookById(id, list);
+					Items i = new Items(b, quantity, (b.getOrigin_price() * (100 - b.getRatio_sale())) / 100 );
+					addItems(i);
+				}
+			}
+		}
+		catch (NumberFormatException e) {
+			System.out.println(e);
+		}
 	}
 }

@@ -389,4 +389,44 @@
     <servlet-name>Update_Account</servlet-name>
     <url-pattern>/update_account</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShopServLet</display-name>
+    <servlet-name>ShopServLet</servlet-name>
+    <servlet-class>controller.ShopServLet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShopServLet</servlet-name>
+    <url-pattern>/shopservLet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Buy</display-name>
+    <servlet-name>Buy</servlet-name>
+    <servlet-class>controller.Buy</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Buy</servlet-name>
+    <url-pattern>/buy</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Show</display-name>
+    <servlet-name>Show</servlet-name>
+    <servlet-class>controller.Show</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Show</servlet-name>
+    <url-pattern>/show</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Process</display-name>
+    <servlet-name>Process</servlet-name>
+    <servlet-class>controller.Process</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Process</servlet-name>
+    <url-pattern>/process</url-pattern>
+  </servlet-mapping>
 </web-app>
