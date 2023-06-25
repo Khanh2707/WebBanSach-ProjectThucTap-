@@ -50,9 +50,10 @@
 		<div class="body__detail_product">
 			<div class="detail_product__img_and_info">
 				<div class="detail_product__img">
-					<img
-						src="${o.img }"
-						alt=""> <span class="div_out-label_sale">-${o.ratio_sale }%</span>
+					<img src="${o.img }" alt=""> 
+					<span class="div_out-label_sale">
+						-${o.ratio_sale }%
+					</span>
 				</div>
 				<div class="detail_product__info">
 					<div class="detail_product__info-title">
@@ -82,21 +83,21 @@
 								${o.author.name }
 							</a>
 						</div>
-						<div
-							class="detail_product__info-description-publishing_company info-description-container">
-							<span
-								class="detail_product__info-description-publishing_company-key info-description-key">
-								Nhà xuất bản: </span> <span
-								class="detail_product__info-description-publishing_company-value">
-								${o.publish_company.name } </span>
+						<div class="detail_product__info-description-publishing_company info-description-container">
+							<span class="detail_product__info-description-publishing_company-key info-description-key">
+								Nhà xuất bản: 
+							</span> 
+							<span class="detail_product__info-description-publishing_company-value">
+								${o.publish_company.name } 
+							</span>
 						</div>
-						<div
-							class="detail_product__info-description-publishing_year info-description-container">
-							<span
-								class="detail_product__info-description-publishing_year-key info-description-key">
-								Năm xuất bản: </span> <span
-								class="detail_product__info-description-publishing_year-value">
-								${o.year_publish } </span>
+						<div class="detail_product__info-description-publishing_year info-description-container">
+							<span class="detail_product__info-description-publishing_year-key info-description-key">
+								Năm xuất bản: 
+							</span> 
+							<span class="detail_product__info-description-publishing_year-value">
+								${o.year_publish } 
+							</span>
 						</div>
 					</div>
 					<div class="modal_body__info-content">
@@ -117,21 +118,26 @@
 						</span>
 					</div>
 					<div class="detail_product__info-version">
-						<span
-							class="detail_product__info-version-key info-description-key">
-							Phiên bản </span> <br> <select name="" id=""
-							class="detail_product__info-version-value">
+						<span class="detail_product__info-version-key info-description-key">
+							Phiên bản 
+						</span> 
+						<br> 
+						<select name="" id="" class="detail_product__info-version-value">
 							<option value="">Bản thường</option>
 						</select>
 					</div>
 					<div class="detail_product__quantity_box">
-						<span class="quantity_box-down"> - </span> <input type="text"
-							value="1"> <span class="quantity_box-up"> + </span>
+						<span class="quantity_box-down"> - </span> 
+						<input class="quantity_box-num" type="text" value="01" name="num"> 
+						<span class="quantity_box-up"> + </span>
 					</div>
 					<div class="detail_product__info-button">
-						<a href="" class="detail_product__info-button_add_cart"> Thêm
-							vào giỏ hàng </a> <a href="" class="detail_product__info-button_buy">
-							Mua ngay </a>
+						<a href="#" onclick="buy('${id}','${'detail' }')" class="detail_product__info-button_add_cart"> 
+							Thêm vào giỏ hàng 
+						</a> 
+						<a href="#" onclick="buy('${id}','${'toCart' }')" class="detail_product__info-button_buy">
+							Mua ngay 
+						</a>
 					</div>
 				</div>
 			</div>
@@ -205,10 +211,17 @@
 	<!-- body -->
 	<jsp:include page="Footer.jsp" />
 	<script type="text/javascript">
-		function buy(id,key) {
-			document.f.action = "buy?id="+id+"&num=1&key="+key;
+		function buy(id,key) {﻿
+			var m = document.querySelector(".quantity_box-num").value
+			if (m > 1) {
+				document.f.action = "buy?id="+id+"&num="+m+"&key="+key;
+			}
+			else {
+				document.f.action = "buy?id="+id+"&num=1&key="+key;
+			}
 			document.f.submit();
 		}
 	</script>
+	<script type="text/javascript" src="javascript/quantitybox.js"></script>
 </body>
 </html>
