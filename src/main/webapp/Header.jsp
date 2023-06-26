@@ -139,11 +139,11 @@
 					<a href="show" class="header__cart-link">
 						<div class="cart__cart_badge">
 							<i class="fa-solid fa-cart-plus fa-2xl"></i> 
-							<span>${sessionScope.size }</span>
+							<span>${sessionScope.size == null ? 0 : sessionScope.size }</span>
 						</div>
 						<div class="cart__text">
 							<span class="cart_text">Giỏ hàng</span><br> 
-							<span>${sessionScope.size }</span> 
+							<span>${sessionScope.size == null ? 0 : sessionScope.size }</span> 
 							<span>sản phẩm</span>
 						</div>
 					</a>

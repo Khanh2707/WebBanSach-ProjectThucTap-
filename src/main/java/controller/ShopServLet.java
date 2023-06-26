@@ -49,15 +49,15 @@ public class ShopServLet extends HttpServlet {
 		
 		Cart cart = new Cart(txtCookies, list);
 		ArrayList<Items> listItems = cart.getItems();
-		int n = 0;
-		if (listItems != null) {
-			for (Items items : listItems) {				
-				n += items.getQuantity();
-			}
+		
+		int n;
+		if (listItems.size() > 0) {
+			n = listItems.size();
 		}
 		else {
-			n = 0;
+			n = 1;
 		}
+		
 		HttpSession session = request.getSession();
 		session.setAttribute("size", n);
 		request.setAttribute("data", list);
@@ -84,16 +84,16 @@ public class ShopServLet extends HttpServlet {
 		
 		Cart cart = new Cart(txtCookies, list);
 		ArrayList<Items> listItems = cart.getItems();
-		int n = 0;
-		if (listItems != null) {
-			for (Items items : listItems) {				
+		int n = 1;
+		if (listItems.size() > 0) {
+			for (Items items : listItems) {
 				n += items.getQuantity();
 			}
 		}
-		else {
-			n = 0;
-		}
+		
 		HttpSession session = request.getSession();
+		session.removeAttribute("size");
+		
 		session.setAttribute("size", n);
 		request.setAttribute("data", list);
 

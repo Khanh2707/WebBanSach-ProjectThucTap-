@@ -6,6 +6,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Book;
 import model.Cart;
 import model.Items;
@@ -52,7 +53,7 @@ public class Process extends HttpServlet {
 		String num_raw = request.getParameter("num");
 		String id = request.getParameter("id");
 		
-		int num = -1;
+		int num;
 		
 		try {
 			Book b = bDAO.getBookById(id);
@@ -88,6 +89,19 @@ public class Process extends HttpServlet {
 		c.setMaxAge(60*60);
 		response.addCookie(c);
 		request.setAttribute("cart", cart);
+		
+		int n = 0;
+		if (items.size() > 0) {
+			for (Items items2 : items) {
+				n += items2.getQuantity();				
+			}
+		}
+		
+		HttpSession session = request.getSession();
+		session.removeAttribute("size");
+		
+		session.setAttribute("size", n);
+		
 		request.getRequestDispatcher("Cart.jsp").forward(request, response);
 	}
 
@@ -134,6 +148,22 @@ public class Process extends HttpServlet {
 		}
 		
 		Cart cart = new Cart(out, list);
+
+		ArrayList<Items> listItems = cart.getItems();
+
+		int n = 0;
+		if (listItems.size() > 0) {
+			for (Items items : listItems) {
+				n += items.getQuantity();
+			}
+		}
+		
+		HttpSession session = request.getSession();
+		session.removeAttribute("size");
+		
+		session.setAttribute("size", n);
+
+		
 		request.setAttribute("cart", cart);
 		request.getRequestDispatcher("Cart.jsp").forward(request, response);
 	}
