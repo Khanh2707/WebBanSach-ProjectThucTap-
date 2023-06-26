@@ -23,74 +23,34 @@
 <link rel="stylesheet" href="css_private/info_account.css">
 </head>
 <body>
+	<c:set var="order" value="${requestScope.order }" />
+	<c:set var="orderline" value="${requestScope.orderline }" />
 	<jsp:include page="Header.jsp"></jsp:include>
 	<div class="container">
         <div class="title">
             <span class="yourAccout">Tài khoản của bạn</span>
             <a href="exit" class="exit">
                 <svg xmlns="IMG/IMG_Icon/right-from-bracket-solid.svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#f46716}</style><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
-                <span>Thoát</span>
+                <a href="exit" style="color: #f46716">Thoát</a>
             </a>
         </div>
-        <div class="cart_header">
-            <span>Mã đơn hàng</span>
-            <span>Ngày đặt</span>
-            <span>Trạng thái thanh toán</span>
-            <span>Vận chuyển</span>
-            <span>Tổng tiền</span>
-        </div>
-        <div class="cart_body">
-            <a>#IPM249010</a>
-            <span>Thg 4 17, 2023</span>
-            <span class="status">Đã hoàn tất</span>
-            <span>Đã giao hàng cho vận chuyển</span>
-            <span>25,500₫</span>
-        </div>
-        <div class="cart_body">
-            <a>#IPM235184</a>
-            <span>Thg 4 17, 2023</span>
-            <span class="status">Đã hoàn tất</span>
-            <span>Đã giao hàng cho vận chuyển</span>
-            <span>0₫</span>
-        </div>
-        <div class="cart_body">
-            <a>#IPM235183</a>
-            <span>Thg 4 17, 2023</span>
-            <span class="status">Đã hoàn tất</span>
-            <span>Đã giao hàng cho vận chuyển</span>
-            <span>0₫</span>
-        </div>
-        <div class="cart_body">
-            <a>#IPM235181</a>
-            <span>Thg 4 17, 2023</span>
-            <span class="status">Đã hoàn tất</span>
-            <span>Đã giao hàng cho vận chuyển</span>
-            <span>32,400₫</span>
-        </div>
-        <div class="cart_body">
-            <a>#IPM235181</a>
-            <span>Thg 4 17, 2023</span>
-            <span class="status">Đã hoàn tất</span>
-            <span>Đã giao hàng cho vận chuyển</span>
-            <span>32,400₫</span>
-        </div>
-        <div class="cart_body">
-            <a>#IPM235181</a>
-            <span>Thg 4 17, 2023</span>
-            <span class="status">Đã hoàn tất</span>
-            <span>Đã giao hàng cho vận chuyển</span>
-            <span>32,400₫</span>
-        </div>  
-       
-
-        <div class="infor">
-            <h1>Trần Khánh</h1>
-            <p>nthtpk7h7i@gmail.com</p>
-            <p>số nhà 25, ngách 2/113, phố Bằng B</p>
-            <p>Vietnam</p>
-            <p>0865308698</p>
-            <a href="">Xem địa chỉ</a>
-        </div>
+        
+	        <div class="cart_header">
+	            <span>Mã đơn hàng</span>
+	            <span>Ngày đặt</span>
+	            <span>Trạng thái thanh toán</span>
+	            <span>Tổng tiền</span>
+	        </div>
+        
+        <c:forEach items="${order }" var="o">
+	        <div class="cart_body">
+	            <a href="list_orderline_by_order?id_order=${o.id }" style="color: #555">${o.id }</a>
+	            <span>${o.date }</span>
+	            <span class="status">Đã hoàn tất</span>
+	            <c:set var="totalMoney" value="${o.totalMoney }" />
+	            <span><fmt:formatNumber value="${totalMoney }" /><ins>đ</ins></span>
+	        </div>  
+       </c:forEach>
     </div>
     <jsp:include page="Footer.jsp"></jsp:include>
 </body>

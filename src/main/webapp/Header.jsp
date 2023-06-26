@@ -85,7 +85,7 @@
 						<a href="Sign_up.jsp">Đăng ký</a> | <a href="Sign_in.jsp">Đăng nhập</a>
 					</span> 
 					<span class="navbar-login--are_login_text">
-						<a href="Info_account.jsp">Xin chào: ${sessionScope.account.fullname }</a> | <a href="exit">Đăng xuất</a>
+						<a href="List_Order_By_Account">Xin chào: ${sessionScope.account.fullname }</a> | <a href="exit">Đăng xuất</a>
 					</span>
 				</div>
 			</div>

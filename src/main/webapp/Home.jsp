@@ -626,6 +626,7 @@
 	                        </div>
 	                        </c:forEach>
 	                        <!-- body__wrapper_product__button_see_more -->
+	                    </form>
                         <div class="wrapper_product__button_see_all"
                         style="
                         width: 100%;  
@@ -643,7 +644,7 @@
 	                    </div>
                     	
                     </div>
-                    </form>
+                    
 				</div>
 			</div>
 			<!-- body__wrapper_product -->
