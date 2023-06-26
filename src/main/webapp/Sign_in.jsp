@@ -28,6 +28,7 @@
                 đăng nhập
             </span>
             <hr>
+            <h3 style="color: red; text-align: center; display: block; margin-top: 30px;">${requestScope.notification }</h3>
             <h3 style="color: red; text-align: center; display: block; margin-top: 30px;">${requestScope.error }</h3>
             <h3 style="color: green; text-align: center; display: block; margin-top: 30px;">${requestScope.success }</h3>
             <div class="sign_up__wrapper">

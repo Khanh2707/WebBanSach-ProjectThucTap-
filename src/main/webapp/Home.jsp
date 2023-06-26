@@ -586,9 +586,9 @@
 	                        <div class="list_product-div_out">
 	                            <div class="list_product-div_in">
 	                                <div class="list_product-div_in-img">
-	                                    <a href="#" onclick ="doDetail_book('${o.id}', '${o.author.id}')"><img
-	                                            src="${o.img }"
-	                                            alt=""></a>
+	                                    <a href="#" onclick ="doDetail_book('${o.id}', '${o.author.id}')">
+	                                    	<img src="${o.img }" alt="">
+	                                    </a>
 	                                </div>
 	                                <div class="test">
 		                                <span>

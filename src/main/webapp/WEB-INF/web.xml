@@ -439,4 +439,37 @@
     <servlet-name>CheckPay</servlet-name>
     <url-pattern>/checkpay</url-pattern>
   </servlet-mapping>
+  <session-config>
+    <session-timeout>3660</session-timeout>
+  </session-config>
+  <servlet>
+    <description></description>
+    <display-name>Purchase_Order</display-name>
+    <servlet-name>Purchase_Order</servlet-name>
+    <servlet-class>controller.Purchase_Order</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Purchase_Order</servlet-name>
+    <url-pattern>/purchase_order</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Update_Order</display-name>
+    <servlet-name>Update_Order</servlet-name>
+    <servlet-class>controller.Order.Update_Order</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Update_Order</servlet-name>
+    <url-pattern>/update_order</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>List_Order</display-name>
+    <servlet-name>List_Order</servlet-name>
+    <servlet-class>controller.Order.List_Order</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>List_Order</servlet-name>
+    <url-pattern>/list_order</url-pattern>
+  </servlet-mapping>
 </web-app>

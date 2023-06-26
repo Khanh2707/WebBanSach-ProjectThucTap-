@@ -114,6 +114,9 @@
 	                <a href="list_account">Quản lý tài khoản</a>
 	            </li>
 	            <li>
+	                <a href="list_order">Quản lý hóa đơn</a>
+	            </li>
+	            <li>
 	                <a href="Home.jsp">Về trang người dùng</a>
 	            </li>
             </ul>
@@ -567,6 +570,56 @@
 		                        <div class="list_info_book_actions">
 		                            <a href="update_account?username=${o.username }" class="button_update"><i class="fa-solid fa-pen"></i></a>
 		                            <a href="#" class="button_delete" onclick="doDeleteAcc('${o.username}')"><i class="fa-solid fa-trash"></i></a>
+		                        </div>
+		                    </div>
+		                </div>
+		                </c:forEach>
+		            </div>
+				</div>
+			</c:if>
+			
+			<c:if test="${keySelected == 'order'}">
+	        	<div class="content_book">
+		            <div class="header">
+		                <span class="title">
+		                    Quản lý hóa đơn
+		                </span>
+		            </div>
+		            <div class="list_book">
+		                <div class="list_title">
+		                    <span class="list_title_id">
+		                        Id Order
+		                    </span>
+		                    <span class="list_title_name">
+		                        Date
+		                    </span>
+		                    <span class="list_title_img">
+		                        Username
+		                    </span>
+		                    <span class="list_title_price">
+		                        Total money
+		                    </span>
+		                    <span class="list_title_actions">
+		                        Actions
+		                    </span>
+		                </div>
+		                <c:forEach items="${requestScope.data }" var="o">
+		                <div class="div_list_info_book">
+		                    <div class="list_info_book">
+		                        <span class="list_info_book_id">
+		                            ${o.id }
+		                        </span>
+		                        <span class="list_info_book_name">
+		                            ${o.date }
+		                        </span>
+		                        <div class="list_info_book_img">
+		                            <span>${o.id_account }</span>
+		                        </div>
+		                        <span class="list_info_book_price">
+		                            ${o.totalMoney }
+		                        </span>
+		                        <div class="list_info_book_actions">
+		                            <a href="update_order?id=${o.id }" class="button_update"><i class="fa-solid fa-pen"></i></a>
 		                        </div>
 		                    </div>
 		                </div>

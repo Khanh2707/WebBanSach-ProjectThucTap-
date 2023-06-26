@@ -28,8 +28,7 @@
 </style>
 </head>
 <body>
-	<h1>${sessionScope.size }</h1>
-	<c:if test="${sessionScope.size < 1 }">
+	<c:if test="${sessionScope.size < 1 || sessionScope.size == null }">
 		
 		<script type="text/javascript">
 			window.onload = function () {
@@ -128,19 +127,16 @@
 						<c:set var="totalMoney" value="${o.totalMoney }" />
 						<span> <fmt:formatNumber value="${totalMoney }" /><ins>đ</ins> </span>
 					</div>
-					<button class="pay_cart__button_pay" type="submit" onclick="Pay()">
-						<span> Thanh toán </span>
-					</button>
+					<form action="checkpay" method="post">
+						<button class="pay_cart__button_pay" type="submit">
+							<span> Thanh toán </span>
+						</button>
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- body -->
 	<jsp:include page="Footer.jsp" />
-	<script type="text/javascript">
-		function Pay() {
-			window.location = "checkpay";
-		}
-	</script>
 </body>
 </html>
