@@ -21,8 +21,24 @@
 	href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <link rel="stylesheet" href="css_public/base.css">
 <link rel="stylesheet" href="css_private/cart.css">
+<style type="text/css">
+	.not_allowed {
+		cursor: not-allowed;
+	}
+</style>
 </head>
 <body>
+	<h1>${sessionScope.size }</h1>
+	<c:if test="${sessionScope.size < 1 }">
+		
+		<script type="text/javascript">
+			window.onload = function () {
+				button_submit = document.querySelector(".pay_cart__button_pay");
+				button_submit.classList.add("not_allowed");
+				button_submit.setAttribute("disabled","disabled");
+			}
+		</script>
+	</c:if>
     <script type="text/javascript">
 		function doDetail_book(id, id_author) {
 			window.location = "detailbook?id="+id+"&id_author="+id_author
@@ -47,7 +63,7 @@
 						<span> Số lượng </span> 
 						<span> Thành tiền </span>
 					</div>
-					<form action="process" method="post" name="formTrash">
+					
 					<div class="checkbox_cart__infor_product-container">
 						<c:forEach items="${o.items }" var="i">
 						<div class="checkbox_cart__infor_product">
@@ -95,16 +111,15 @@
 								<fmt:formatNumber value="${priceXquantity }" /><ins>đ</ins>
 							</span>
 							<div class="checkbox_cart__infor_product-trash">
-								
+								<form action="process" method="post">
 									<input type="hidden" name="id" value="${i.book.id }">
-									<h1>${i.book.id }</h1>
-									<i class="fa-regular fa-trash-can" onclick="Trash()"></i>
-
+									<button style="background-color: white; border: none; cursor: pointer; font-size: 20px;" type="submit"><i class="fa-regular fa-trash-can"></i></button>
+								</form>
 							</div>
 						</div>
 						</c:forEach>
 					</div>
-					</form>
+					
 				</div>
 
 				<div class="cart_interface-container__pay_cart">
@@ -125,11 +140,6 @@
 	<script type="text/javascript">
 		function Pay() {
 			window.location = "checkpay";
-		}
-	</script>
-	<script type="text/javascript">
-		function Trash() {
-			document.formTrash.submit();
 		}
 	</script>
 </body>
