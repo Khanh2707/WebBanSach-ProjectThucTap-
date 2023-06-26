@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="css_public/header.css">
 </head>
 <body>
+
 	<c:if test="${sessionScope.account.fullname != null && sessionScope.account.fullname == 'sa'}">
 		<script type="text/javascript">
 			window.onload = function () {
@@ -147,55 +148,6 @@
 							<span>sản phẩm</span>
 						</div>
 					</a>
-					<!-- No product: cart__cart_badge--hover--no_product -->
-					<!-- Has product: cart__cart_badge--hover--has_product -->
-					<div class="cart__cart_badge--hover cart__cart_badge--hover--no_product">
-						<img class="cart__cart_badge--hover--no_product-img"
-							src="IMG/IMG_EmptyCart/empty_cart.jpg" alt=""> 
-							<span class="cart__cart_badge--hover--no_product-msg"> 
-								Chưa có sản phẩm 
-							</span>
-
-						<header class="cart_badge__header">
-							<span>Số lượng sản phẩm: </span> 
-							<span>${sessionScope.size }</span>
-						</header>
-						<ul class="cart_badge__list">
-							<li class="cart_badge__items">
-								<div class="cart_badge__items-img">
-									<a href="detail_product.html"><img
-										src="IMG/IMG_Book/Kinh Tế/Chấn Hưng Nhật Bản/chan_hung_nhat_ban.jpg"
-										alt="">
-									</a>
-								</div>
-								<div class="cart_badge__items-info">
-									<a class="cart_badge__items-name" href="detail_product.html">
-										Chấn Hưng Nhật Bản 
-									</a>
-									<div class="cart_badge__items-description">
-										<span class="items-description-version"> Bản thường </span> <br>
-										<span class="items-description-quantity"> 154,000 x 2 </span>
-									</div>
-								</div> 
-								<span class="cart_badge__items-times">
-									<a href=""><i class="fa-solid fa-circle-xmark"></i></a>
-								</span>
-							</li>
-						</ul>
-						<div class="cart_badge__capital_sum">
-							<span>
-								Tổng tiền: 
-							</span> 
-							<span>
-								154,000<ins>đ</ins>
-							</span>
-						</div>
-						<a href="" class="wrapper_test"> 
-							<span> 
-								Thanh toán <i class="fa-solid fa-chevron-right"></i>
-							</span>
-						</a>
-					</div>
 				</div>
 			</div>
 		</div>

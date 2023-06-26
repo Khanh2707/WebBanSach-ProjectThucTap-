@@ -97,6 +97,7 @@
 							<div class="checkbox_cart__infor_product-trash">
 								
 									<input type="hidden" name="id" value="${i.book.id }">
+									<h1>${i.book.id }</h1>
 									<i class="fa-regular fa-trash-can" onclick="Trash()"></i>
 
 							</div>

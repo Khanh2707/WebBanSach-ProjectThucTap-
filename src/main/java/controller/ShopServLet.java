@@ -49,16 +49,17 @@ public class ShopServLet extends HttpServlet {
 		
 		Cart cart = new Cart(txtCookies, list);
 		ArrayList<Items> listItems = cart.getItems();
-		
-		int n;
+		int n = 1;
 		if (listItems.size() > 0) {
-			n = listItems.size();
-		}
-		else {
-			n = 1;
+			for (Items items : listItems) {
+				System.err.println(items.getQuantity());
+				n += items.getQuantity();
+			}
 		}
 		
 		HttpSession session = request.getSession();
+		session.removeAttribute("size");
+		
 		session.setAttribute("size", n);
 		request.setAttribute("data", list);
 		
@@ -81,15 +82,32 @@ public class ShopServLet extends HttpServlet {
 				}
 			}
 		}
+		String num = request.getParameter("num");
+		String id = request.getParameter("id");
+		
+		int num_int = 0;
+		try {
+			num_int = Integer.parseInt(num);
+		}
+		catch (NumberFormatException e) {
+			System.err.println(e);
+		}
+		
+		if (txtCookies.isEmpty()) {
+			txtCookies = id+":"+num;
+		}
+		else {
+			txtCookies = txtCookies+"/"+id+":"+num;
+		}
 		
 		Cart cart = new Cart(txtCookies, list);
 		ArrayList<Items> listItems = cart.getItems();
-		int n = 1;
-		if (listItems.size() > 0) {
+		int n = 0;
+
 			for (Items items : listItems) {
 				n += items.getQuantity();
 			}
-		}
+
 		
 		HttpSession session = request.getSession();
 		session.removeAttribute("size");

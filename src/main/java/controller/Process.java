@@ -125,6 +125,7 @@ public class Process extends HttpServlet {
 		}
 		
 		String id = request.getParameter("id");
+		System.err.println(id);
 		
 		String[] ids = txtCookies.split("/");
 		String out = "";

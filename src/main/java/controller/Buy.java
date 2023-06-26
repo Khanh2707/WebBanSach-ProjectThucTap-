@@ -58,6 +58,14 @@ public class Buy extends HttpServlet {
 		String num = request.getParameter("num");
 		String id = request.getParameter("id");
 		
+		int num_int = 0;
+		try {
+			num_int = Integer.parseInt(num);
+		}
+		catch (NumberFormatException e) {
+			System.err.println(e);
+		}
+		
 		if (txtCookies.isEmpty()) {
 			txtCookies = id+":"+num;
 		}
@@ -66,7 +74,7 @@ public class Buy extends HttpServlet {
 		}
 		
 		Cookie c = new Cookie("cart", txtCookies);
-		c.setMaxAge(60*60*24);
+		c.setMaxAge(60*60);
 		response.addCookie(c);
 		
 		request.getRequestDispatcher("shopservLet").forward(request, response);
