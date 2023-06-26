@@ -113,6 +113,7 @@ a{
 	<jsp:include page="Header.jsp"></jsp:include>
 	<c:set var="orderline" value="${requestScope.orderline }" />
 	<c:set var="order" value="${requestScope.order }" />
+	<c:set var="books" value="${requestScope.books }" />
 	<div class="container">
         <span class="timeOrder">ĐƠN HÀNG: ${orderline[0].id_order }</span>
         <a href="List_Order_By_Account" class="backToAccount">Quay lại trang tài khoản</a>
@@ -123,9 +124,11 @@ a{
             <span>Số lượng</span>
             <span>Tổng cộng</span>
         </div>
+        <c:set var="count" value="-1" scope="page" />
         <c:forEach items="${orderline }" var="o">
+        <c:set var="count" value="${count + 1}" scope="page" />
         <div class="cart_body">
-            <a>[Flash Sale] Dã Thú Đô Thành - Default Title</a>
+            <a>${books[count].name }</a>
             <span>${o.id_book }</span>
             <c:set var="price" value="${o.price }" />
             <span class="status"><fmt:formatNumber value="${price }" /><ins>đ</ins></span>

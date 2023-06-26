@@ -10,6 +10,7 @@ import model.Order;
 import model.OrderLine;
 
 import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 import dal.Book_DAO;
@@ -39,6 +40,11 @@ public class List_OrderLine_By_Order extends HttpServlet {
 		Order order = oDAO.getOrderById(id_order);
 		request.setAttribute("orderline", orderline);
 		request.setAttribute("order", order);
+		
+		Book_DAO bDAO = new Book_DAO();
+		ArrayList<Book> books = bDAO.getNameBooksByOrderId(order.getId());
+		request.setAttribute("books", books);
+		
 		request.getRequestDispatcher("OrderLine.jsp").forward(request, response);
 		
 	}

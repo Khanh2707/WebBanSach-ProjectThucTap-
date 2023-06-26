@@ -281,4 +281,42 @@ public class Book_DAO extends DBContext implements Serializable {
 		}
 		return listBook;
 	}
+	
+	public ArrayList<Book> getNameBooksByOrderId(int id) {
+		ArrayList<Book> list = new ArrayList<>();
+		String selectQuery = "select *\r\n"
+				+ "from OrderLine join Book on OrderLine.[id-book] = Book.[id-book]\r\n"
+				+ "where [id-order] = ?";
+		try {
+			PreparedStatement ps = conn.prepareStatement(selectQuery);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				Book book = new Book();
+				book.setId(rs.getString("id-book"));
+				book.setName(rs.getString("name-book"));
+				book.setOrigin_price(rs.getInt("origin_price-book"));
+				book.setRatio_sale(rs.getByte("ratio_sale-book"));
+				book.setYear_publish(rs.getShort("year_publish-book"));
+				book.setContent(rs.getString("content-book"));;
+				book.setQuantity(rs.getShort("quantity-book"));
+				book.setImg(rs.getString("img-book"));
+				Category_DAO cDAO = new Category_DAO();
+				Category c = cDAO.getCategoryById(rs.getString("id-category"));
+				book.setCategory(c);
+				Author_DAO aDAO = new Author_DAO();
+				Author a = aDAO.getAuthorById(rs.getString("id-author"));
+				book.setAuthor(a);
+				Publish_company_DAO pcDAO = new Publish_company_DAO();
+				Publish_company pc = pcDAO.getPublish_companyById("id-publish_company");
+				book.setPublish_company(pc);
+				list.add(book);
+			}
+		}
+		catch (SQLException e) {
+			System.out.println(e);
+		}
+		return list;
+	}
 }

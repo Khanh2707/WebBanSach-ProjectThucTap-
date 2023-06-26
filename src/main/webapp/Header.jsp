@@ -44,10 +44,6 @@
 		</script>
 	</c:if>
 	
-	<script type="text/javascript">
-		
-	</script>
-	
 	<c:if test="${sessionScope.account.fullname == null}">
 		<script type="text/javascript">
 			window.onload = function () {
