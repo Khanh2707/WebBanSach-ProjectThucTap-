@@ -626,7 +626,7 @@
 	                        </div>
 	                        </c:forEach>
 	                        <!-- body__wrapper_product__button_see_more -->
-	                    </form>
+	                    
                         <div class="wrapper_product__button_see_all"
                         style="
                         width: 100%;  
@@ -643,8 +643,74 @@
                         <!-- body__wrapper_product__button_see_more -->
 	                    </div>
                     	
+                    	
+                    	
+                    	<div class="wrapper_product__list_product-container disabled" value="1">
+							
+							<jsp:useBean id="top101" class="dal.OrderByDAO" scope="page"></jsp:useBean>
+							<c:forEach items="${top101.all101 }" var="p">
+	                        <div class="list_product-div_out">
+	                            <div class="list_product-div_in">
+	                                <div class="list_product-div_in-img">
+	                                    <a href="#" onclick ="doDetail_book('${p.id}', '${p.author.id}')">
+	                                    	<img src="${p.img }" alt="">
+	                                    </a>
+	                                </div>
+	                                <div class="test">
+		                                <span>
+			                                <a href="#" onclick ="doDetail_book('${p.id}', '${p.author.id}')" 
+			                                style="
+			                                display: block;
+										    padding: 0px 20px;
+										    padding-bottom: 5px;
+										    white-space: nowrap;
+										    overflow: hidden;
+										    text-overflow: ellipsis;">
+			                                	${p.name }
+			                                </a>
+		                                </span>
+		                                <div class="div_in-price">
+		                                	<c:set var="sale_price" value="${((100 - p.ratio_sale) * p.origin_price) / 100 }" />
+		                                	<c:set var="origin_price" value="${p.origin_price }" />
+		                                    <span class="div_in-price-sale"><fmt:formatNumber value="${sale_price }" /><ins>đ</ins></span>
+		                                    <span class="div_in-price-origin"><del><fmt:formatNumber value="${origin_price }" /><ins>đ</ins></del></span>
+		                                </div>
+	                                </div>
+	                                <div class="div_in__choice_hover">
+	                                    <div class="eye">
+	                                        <i class="fa-solid fa-eye"></i>
+	                                    </div>
+	                                    <div onclick="buy('${p.id}','${'toCart' }')">
+	                                        <i class="fa-solid fa-bag-shopping"></i>
+	                                    </div>
+	                                    <div onclick="buy('${p.id}','${'home' }')">
+	                                        <i class="fa-solid fa-cart-shopping"></i>
+	                                    </div>
+                                	</div>
+	                            </div>
+	                            <span class="div_out-label_sale">-${p.ratio_sale }%</span>
+	                        </div>
+							</c:forEach>
+	                        <!-- body__wrapper_product__button_see_more -->
+	                    
+                        <div class="wrapper_product__button_see_all"
+                        style="
+                        width: 100%;  
+                        text-align: center; 
+                        padding-top: 20px; 
+                        padding-bottom: 100px;">
+	                        <form action="listselect" id="form_select">
+	                        	<input style="display: none;" type="text" name="list_select" value="mn">
+	                        	<input style="display: none;" type="text" name="keyOrderBy" value="all">
+								<input style="display: none;" type="text" name="nameOrderBy" value="all">
+	                            <input type="submit" value="Xem thêm">
+                            </form>
+                        </div>
+                        <!-- body__wrapper_product__button_see_more -->
+	                    </div>
+	                    
                     </div>
-                    
+                    </form>
 				</div>
 			</div>
 			<!-- body__wrapper_product -->

@@ -114,10 +114,11 @@ public class OrderByDAO extends DBContext implements Serializable {
 		return list;
 	}
 	
-	public ArrayList<Book> getAll10sell() {
+	public ArrayList<Book> getAll101() {
 		ArrayList<Book> list = new ArrayList<>();
-		String selectQuery = "select top 10 Book.[id-book], OrderLine.quantity\r\n"
-				+ "from Book join OrderLine on Book.[id-book] = OrderLine.[id-book]";
+		String selectQuery = "select top 10 *\r\n"
+				+ "from Book join OrderLine on Book.[id-book] = OrderLine.[id-book]\r\n"
+				+ "order by quantity desc";
 		try {
 			PreparedStatement ps = conn.prepareStatement(selectQuery);
 //			ps.setString(1, AId);
