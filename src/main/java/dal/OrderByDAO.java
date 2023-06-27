@@ -118,6 +118,7 @@ public class OrderByDAO extends DBContext implements Serializable {
 		ArrayList<Book> list = new ArrayList<>();
 		String selectQuery = "select top 10 *\r\n"
 				+ "from Book join OrderLine on Book.[id-book] = OrderLine.[id-book]\r\n"
+				+ "where not Book.[id-book] = 'AY1'\r\n"
 				+ "order by quantity desc";
 		try {
 			PreparedStatement ps = conn.prepareStatement(selectQuery);

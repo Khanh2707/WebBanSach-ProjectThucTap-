@@ -691,22 +691,6 @@
 	                            <span class="div_out-label_sale">-${p.ratio_sale }%</span>
 	                        </div>
 							</c:forEach>
-	                        <!-- body__wrapper_product__button_see_more -->
-	                    
-                        <div class="wrapper_product__button_see_all"
-                        style="
-                        width: 100%;  
-                        text-align: center; 
-                        padding-top: 20px; 
-                        padding-bottom: 100px;">
-	                        <form action="listselect" id="form_select">
-	                        	<input style="display: none;" type="text" name="list_select" value="mn">
-	                        	<input style="display: none;" type="text" name="keyOrderBy" value="all">
-								<input style="display: none;" type="text" name="nameOrderBy" value="all">
-	                            <input type="submit" value="Xem thêm">
-                            </form>
-                        </div>
-                        <!-- body__wrapper_product__button_see_more -->
 	                    </div>
 	                    
                     </div>
